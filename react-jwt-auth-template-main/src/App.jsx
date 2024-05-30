@@ -19,7 +19,7 @@ const App = () => {
   useEffect(() => {
     const fetchGarages = async () => {
       const garageData = await garageService.index(user._id)
-      console.log(garageData)
+      setGarages(garageData)
     };
     if (user) fetchGarages();
   }, [user]);
@@ -50,7 +50,9 @@ const App = () => {
         {newGarage && <NewGarageForm handleNewGarage={handleNewGarage}/>}
         <Routes>
           {user ? (
-            <Route path="/" element={<Dashboard user={user} />} />
+            <>
+            <Route path="/" element={<Dashboard user={user} garages={garages}/>} />
+            </>
           ) : (
             <Route path="/" element={<Landing />} />
           )}
