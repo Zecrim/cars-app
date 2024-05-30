@@ -12,7 +12,7 @@ router.use(verifyToken);
 // Everything starts with  /:userId/garages
 
 // Garage
-//  get /, get /new, post /, get /:garageId, get /:garagId/edit (don't need),
+//  get /, get /new, post /, get /:garageId, get /:garageId/edit (don't need),
 // put /:garageId, delete /:garageId
 
 router.get('/', async (req, res) => {

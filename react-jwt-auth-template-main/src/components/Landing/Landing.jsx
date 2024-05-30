@@ -1,10 +1,14 @@
+import { Link } from 'react-router-dom';
+
 const Landing = () => {
   return (
     <main>
-      <h1>Hello, you are on the landing page for visitors.</h1>
+      <h1>Hello, what should we put on this page.</h1>
       <h3>
-        If you sign up for a new account, you will have the ability to sign in
-        and see your super secret dashboard.
+        <ul>
+          <li>stuff for a homepage<br/></li>
+          <li>Check out these cool <Link to="/garages">Garages</Link></li>
+        </ul>
       </h3>
     </main>
   );
