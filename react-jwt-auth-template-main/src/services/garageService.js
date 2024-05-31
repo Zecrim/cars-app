@@ -19,7 +19,6 @@ try {
     const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}/`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
-    console.log(res)
     return res.json();
     } catch (error) {
       console.log(error);
@@ -46,7 +45,7 @@ const create = async (userId, formData) => {
   };
 
   // Car create
-const carCreate = async (userId, garageId, formData) => {
+const createCar = async (userId, garageId, formData) => {
   try {
       // console.log('userid: '+userId+' formdata '+formData)
       // console.log(`fetching to: ${BASE_URL}/${userId}/garages/`)
@@ -80,6 +79,6 @@ const carShow = async (userId, garageId, carId) => {
     index,
     show,
     create,
-    carCreate,
+    createCar,
     carShow,
   }
