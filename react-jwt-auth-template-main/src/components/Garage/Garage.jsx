@@ -16,7 +16,6 @@ const Garage = (props) => {
     useEffect(() => {
         const fetchCars = async () => {
           const garageData = await garageService.show(userId, garageId)
-          console.log(garageData)
           setCars(garageData.cars)
           setGarageName(garageData.name)
         };
@@ -30,8 +29,8 @@ const Garage = (props) => {
     
     const handleNewCar = async (formData) => {
         const newCar = await garageService.createCar(userId, garageId, formData);
-        props.setCars([... props.cars, newCar]);
-        toggleNewGarage();
+        setCars([...cars, newCar]);
+        toggleNewCar();
     }
 
     return (
@@ -39,10 +38,11 @@ const Garage = (props) => {
             <div>
                 <h1>Welcome to {garageName}</h1>
             </div>
+            <CarList cars={cars}/>
             <div className="garage">
                 <button onClick={toggleNewCar}>Add a Car</button>
                 {newCar && <NewCarForm handleNewCar={handleNewCar} />}
-                <CarList cars={props.cars}/>
+                
             </div>
         </>
      )
