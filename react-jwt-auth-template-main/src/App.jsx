@@ -6,15 +6,16 @@ import Dashboard from './components/Dashboard/Dashboard';
 import SignupForm from './components/SignupForm/SignupForm';
 import SigninForm from './components/SigninForm/SigninForm';
 import NewGarageForm from './components/NewGarageForm/NewGarageForm';
+import Garage from './components/Garage/Garage';
 import * as authService from '../src/services/authService'; // import the authservice
 import * as garageService from './services/garageService'
-
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
   const [user, setUser] = useState(authService.getUser()); // using the method from authservice
   const [garages, setGarages] = useState([])
   const [newGarage, setNewGarage] = useState(false);
+  const [cars, setCars] = useState([])
 
   useEffect(() => {
     const fetchGarages = async () => {
@@ -52,6 +53,7 @@ const App = () => {
           {user ? (
             <>
             <Route path="/" element={<Dashboard user={user} garages={garages}/>} />
+            <Route path="/:userId/garages/:garageId" element={<Garage cars={cars} />} />
             </>
           ) : (
             <Route path="/" element={<Landing />} />
