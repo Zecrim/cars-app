@@ -15,12 +15,14 @@ const index = async (userId) => {
 // Garage show
 const show = async (userId, garageId) => {
 try {
-    const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}`, {
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  console.log(userId, garageId)
+    const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}/`, {
+      headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
     });
+    console.log(res)
     return res.json();
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
 };
 

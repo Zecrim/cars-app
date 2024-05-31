@@ -7,9 +7,9 @@ const Dashboard = (props) => {
   return (
     <main>
       <h1>Welcome, {user.username}</h1>
-      <p>
+      <div>
         <GarageList garages={props.garages} userId={user._id} />
-      </p>
+      </div>
     </main>
   );
 };

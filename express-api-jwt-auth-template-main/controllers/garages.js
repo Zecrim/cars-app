@@ -41,16 +41,17 @@ router.post('/', async (req, res) => {
 
   router.get('/:garageId', async (req, res) => {
     try {
-      const garage = await Garage.findById(req.params.garageId).populate('owner', 'cars', 'comments');
+      const garage = await Garage.findById(req.params.garageId)
       res.status(200).json(garage);
     } catch (error) {
+      console.log(error)
       res.status(500).json(error);
     }
   });
 
   router.put('/:garageId', async (req, res) => {
     try {
-      const garage = await Garage.findById(req.params.garageId);
+      const garage = await Garage.findById(req.params.garageId); // could potentially populate owner but holding off
   
       if (!garage.owner.equals(req.user._id)) {
         return res.status(403).send("You're not allowed to do that!");

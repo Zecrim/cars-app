@@ -1,5 +1,3 @@
-
-
 const CarList = (props) => {
 
     if (!props.car) return <main>Loading...</main>

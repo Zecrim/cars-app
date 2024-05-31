@@ -1,7 +1,9 @@
-export default function NewCarForm {
+const NewCarForm = () => {
     return (
         <>
-        NewCarForm!!!
+        <p>NewCarForm!!!</p>
         </>
     )
 }
+
+export default NewCarForm
