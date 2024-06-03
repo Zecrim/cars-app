@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext} from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import CarCommentForm from '../CarCommentForm/CarCommentForm.jsx';
+import NewCarForm from '../NewCarForm/NewCarForm'
 import { AuthedUserContext } from '../../App';
 import * as garageService from '../../services/garageService'
 
@@ -11,6 +12,8 @@ const CarShow = () => {
     const [car, setCar] = useState()
     const [garage, setGarage] = useState()
     const navigate = useNavigate()
+    const [editCar, setEditCar] = useState()
+    
 
     useEffect(() => {
         const fetchCar = async () => {
@@ -42,8 +45,19 @@ const CarShow = () => {
         // Filter state using deletedHoot._id:
         setGarage(garage.cars.filter((car) => car._id !== deletedCar._id));
         // Redirect the user:
-        navigate(`/${userId}/garages/${garageId}/`);
+        navigate(`/${userId}/garages/${garageId}`);
       };
+
+      const handleEditCar = async (formData) => {
+        // console.log(userId, garageId, carId, formData)
+        garageService.updateCar(userId, garageId, carId, formData);
+        toggleEditCar(false)
+      }
+      
+      const toggleEditCar = () => {
+        editCar ? setEditCar(false) : setEditCar(true)
+    }
+
 
     if (!car) return (
         <>
@@ -61,6 +75,9 @@ const CarShow = () => {
     <div className="carShow">
         Sweet car, bro!
         <section>
+        <div className="carImage">
+            <img src={car.imgURL} alt="Car" />
+        </div>
         <div className="carDetails">
             <div className="carStats">
                 <p>
@@ -70,13 +87,15 @@ const CarShow = () => {
                     Year: {car.year} <br />
                 </p>
             </div>
-            <div className="carImage">
-                <img src={car.imgURL} alt="Car" />
-            </div>
-            {garage.owner === userId && (
+            
+        <div className="editCar">
+        {editCar && <NewCarForm car={car} toggleEditCar={toggleEditCar} handleEditCar={handleEditCar}/>}
+        </div>
+
+        {garage.owner === userId && (
             <>
-                <Link to={`${userId}/garages/${garageId}/${carId}/edit`}>Edit</Link>
-                <button onClick={() => handleDeleteCar(carId)}>Delete</button>
+            <button onClick={() => toggleEditCar(car)}>Modify Car</button>
+            <button onClick={() => handleDeleteCar(carId)}>Sell Car (delete)</button>
             </>
         )}
         </div>

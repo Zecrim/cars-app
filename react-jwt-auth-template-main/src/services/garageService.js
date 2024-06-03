@@ -91,7 +91,7 @@ const carShow = async (userId, garageId, carId) => {
   // Update Car
   const updateCar = async (userId, garageId, carId, formData) => {
     try {
-      const res = await fetch(`${BASE_URL}/${garageId}/${carId}`, {
+      const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}/${carId}`, {
         method: 'PUT',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
