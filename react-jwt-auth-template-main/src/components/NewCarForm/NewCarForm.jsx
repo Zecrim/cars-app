@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
 import * as carService from '../../services/garageService';
 // import styles from './NewGarageForm.module.css';
@@ -10,7 +10,7 @@ const NewCarForm = (props) => {
         make: '',
         model: '',
         color: '',
-        year: NaN,
+        year: 1999,
         imgURL: '',
     }
 
@@ -20,28 +20,44 @@ const NewCarForm = (props) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
     };
 
+    useEffect(() => {
+        const fillForm = () => {
+            setFormData({
+                make: props.car.make,
+                model: props.car.model,
+                color:props.car.color,
+                year:props.car.year,
+                imgURL:props.car.imgURL,
+              })
+        }
+        if (props.car) fillForm();
+    }, [props.car])
+
+    
     const handleSubmit = (evt) => {
         evt.preventDefault();
-        if (props.carId) {
-            carService.updateCar(props.carId, formData);
-            navigate(`/cars/${props.carId}`);
+        if (props.car) {
+            props.handleEditCar(formData)
+            // console.log(props.car._id, formData)
+            // carService.updateCar(props.car._id, formData);
+            // props.toggleEditCar(false)
         } else {
             props.handleNewCar(formData);
         }
         setFormData(emptyForm);
     };
 
-    if (props.garageId) return (
+    if (props.car?._id) return (
         <>
           <form onSubmit={handleSubmit}>
-            <h1>New Car Information</h1>
+            <h1>Car Information</h1>
             <label htmlFor="text-input">Car Make:</label>
                 <input
                     required
                     type="text"
                     name="make"
                     id="text-input"
-                    value={formData.model}
+                    value={formData.make}
                     onChange={handleChange}
                 /><br/>
                 <label htmlFor="text-input">Car Model:</label>
@@ -50,7 +66,7 @@ const NewCarForm = (props) => {
                     type="text"
                     name="model"
                     id="text-input"
-                    value={formData.make}
+                    value={formData.model}
                     onChange={handleChange}
                 /><br/>
                 <label htmlFor="text-input">Car Color:</label>
@@ -78,7 +94,7 @@ const NewCarForm = (props) => {
                     value={formData.imgURL}
                     onChange={handleChange}
                 /><br/>
-            <button type="submit">Create New Car</button>
+            <button type="submit">Modify Car</button>
             </form>
         </>
     );
