@@ -33,20 +33,20 @@ const NewCarForm = (props) => {
         <>
           <form onSubmit={handleSubmit}>
             <h1>New Car Information</h1>
-            <label htmlFor="text-input">Car Model:</label>
-                <input
-                    required
-                    type="text"
-                    name="model"
-                    id="text-input"
-                    value={formData.model}
-                    onChange={handleChange}
-                /><br/>
-                <label htmlFor="text-input">Car Make:</label>
+            <label htmlFor="text-input">Car Make:</label>
                 <input
                     required
                     type="text"
                     name="make"
+                    id="text-input"
+                    value={formData.model}
+                    onChange={handleChange}
+                /><br/>
+                <label htmlFor="text-input">Car Model:</label>
+                <input
+                    required
+                    type="text"
+                    name="model"
                     id="text-input"
                     value={formData.make}
                     onChange={handleChange}
