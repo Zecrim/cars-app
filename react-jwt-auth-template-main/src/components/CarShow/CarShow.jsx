@@ -50,7 +50,8 @@ const CarShow = () => {
 
       const handleEditCar = async (formData) => {
         // console.log(userId, garageId, carId, formData)
-        garageService.updateCar(userId, garageId, carId, formData);
+        const updatedCar = await garageService.updateCar(userId, garageId, carId, formData);
+        setCar(updatedCar)
         toggleEditCar(false)
       }
       
@@ -110,8 +111,11 @@ const CarShow = () => {
                 <article key={comment._id}>
                 <header>
                     <div>
-                    {comment.author.username} <br />
-                    {comment.author === userId && (
+                    {comment.author.username} 
+                    {new Date(comment.createdAt).toLocaleDateString()}
+                    <br />
+                    {console.log(comment.author.username)}
+                    {comment.author._id === userId && (
                     <>
                         <Link to={`/${userId}/garages/${garageId}/${carId}/comments/${comment._id}/edit`}>
                         Edit

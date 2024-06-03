@@ -157,7 +157,10 @@ router.post('/', async (req, res) => {
   // Show GET /:garageId/:carId
   router.get('/:garageId/:carId', async (req, res) => {
     try {
-      const garage = await Garage.findById(req.params.garageId);
+      const garage = await Garage.findById(req.params.garageId)
+      .populate({
+        path: 'cars.comments.author',
+    })
       const foundCar = garage.cars.id(req.params.carId);
       res.status(200).json(foundCar);
     } catch (err) {
@@ -177,7 +180,7 @@ router.post('/', async (req, res) => {
         car.year = req.body.year;
         car.imgURL = req.body.imgURL;
       await garage.save();
-      res.status(200).json({ message: 'Ok' }); // Can return the car object later if we need to
+      res.status(200).json(car); // Can return the car object later if we need to
     } catch (err) {
       res.status(500).json(err);
     }

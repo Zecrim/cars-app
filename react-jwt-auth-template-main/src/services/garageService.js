@@ -161,6 +161,20 @@ const carShow = async (userId, garageId, carId) => {
     }
   };
 
+  const deleteGarage = async (userId, garageId) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+        },
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   export {
     index,
     show,
@@ -172,4 +186,5 @@ const carShow = async (userId, garageId, carId) => {
     createCarComment,
     deleteCarComment,
     editCarComment,
+    deleteGarage
   }

@@ -12,7 +12,6 @@ const NewGarageForm = (props) => {
   useEffect(() => {
     const fetchGarage = async () => {
       const garageData = await garageService.show(props.garageId);
-      // Find comment in fetched hoot data
       setFormData(garageData.name);
     };
     if (props.garageId) fetchGarage();
@@ -26,13 +25,19 @@ const NewGarageForm = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (props.garageId) {
-        garageService.updateGarage(props.garageId, formData);
+      // actually we'll want to do the same thing and lift the editGarage function up to the garage itself (same way we did for EditCar)
+        garageService.updateGarage(props.garageId, formData); // make this return the garage and then use the garage to populate the formData
+        //probably don't need navigate- we'll already be on the garage if we're editing it
         navigate(`/garages/${props.garageId}`);
     } else {
         props.handleNewGarage(formData);
     }
         setFormData({ name: '' });
     };
+
+    <div className="editGarage">
+        {editGarage && <NewGarageForm garage={garage} toggleEditGarage={toggleEditGarage} handleEditGarage={handleEditGarage}/>}
+    </div>
 
     if (props.garageId) return (
         <main className={styles.container}>
