@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom'
 import * as garageService from '../../services/garageService';
-import styles from './CommentForm.module.css';
+// import styles from './CommentForm.module.css';
 
 
 const CarCommentForm = (props) => {
@@ -11,12 +11,12 @@ const CarCommentForm = (props) => {
 
   useEffect(() => {
     const fetchCar = async () => {
-      const carData = await garageService.show(carId);
+      const carData = await garageService.show(userId, garageId, carId);
       // Find comment in fetched hoot data
       setFormData(carData.comments.find((comment) => comment._id === commentId));
     };
     if (carId && commentId) fetchCar();
-  }, [carId, commentId]);
+  }, [userId, garageId, carId, commentId]);
   
 
   const handleChange = (evt) => {
@@ -26,7 +26,7 @@ const CarCommentForm = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (carId && commentId) {
-        garageService.updateComment(carId, commentId, formData);
+        garageService.updateComment(userId, garageId, carId, commentId, formData);
         navigate(`/${userId}/garages/${garageId}/cars/${carId}`);
       } else {
         props.handleAddComment(formData);

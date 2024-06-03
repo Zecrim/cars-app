@@ -1,13 +1,21 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import * as carService from '../../services/garageService';
 // import styles from './NewGarageForm.module.css';
 // import Icon from '../Icon/Icon';
 
 
 const NewCarForm = (props) => {
-    const [formData, setFormData] = useState({ name: '' });
+    const emptyForm = {
+        make: '',
+        model: '',
+        color: '',
+        year: NaN,
+        imgURL: '',
+    }
 
+    const [formData, setFormData] = useState(emptyForm);
+    const navigate = useNavigate()
     const handleChange = (evt) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
     };
@@ -20,13 +28,7 @@ const NewCarForm = (props) => {
         } else {
             props.handleNewCar(formData);
         }
-        setFormData({
-            make: '',
-            model: '',
-            color: '',
-            year: '',
-            imgURL: '',
-        });
+        setFormData(emptyForm);
     };
 
     if (props.garageId) return (

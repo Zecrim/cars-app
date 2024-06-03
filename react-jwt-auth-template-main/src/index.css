@@ -66,3 +66,44 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.carImage {
+  max-width: 450px;
+  max-height: 450px;
+  overflow: hidden;
+}
+
+.carImage img {
+  width: 100%;
+  height: auto;
+}
+
+.car-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.car-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.car-item a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.car-thumbnail {
+  width: 100px;
+  height: auto;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.car-item h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
