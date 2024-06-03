@@ -63,10 +63,10 @@ const createCar = async (userId, garageId, formData) => {
   }
 };
 
-// Garage show
+// Car show
 const carShow = async (userId, garageId, carId) => {
   try {
-      const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}/cars/${carId}`, {
+      const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}/${carId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       });
       return res.json();
