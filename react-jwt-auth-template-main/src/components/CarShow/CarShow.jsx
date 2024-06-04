@@ -12,7 +12,8 @@ const CarShow = () => {
     const [car, setCar] = useState()
     const [garage, setGarage] = useState()
     const navigate = useNavigate()
-    const [editCar, setEditCar] = useState()
+    const [editCar, setEditCar] = useState(false)
+    const [editComment, setEditComment] = useState('')
     
 
     useEffect(() => {
@@ -37,26 +38,36 @@ const CarShow = () => {
           comments: car.comments.filter((comment) => comment._id !== commentId),
         });
         console.log(deletedComment)
-      };
+    };
 
-      const handleDeleteCar = async (carId) => {
-        // Call upon the service function:
-        const deletedCar = await garageService.deleteCar(userId, garageId, carId);
-        // Filter state using deletedHoot._id:
-        setGarage(garage.cars.filter((car) => car._id !== deletedCar._id));
-        // Redirect the user:
-        navigate(`/${userId}/garages/${garageId}`);
-      };
+    const handleDeleteCar = async (carId) => {
+    // Call upon the service function:
+    const deletedCar = await garageService.deleteCar(userId, garageId, carId);
+    // Filter state using deletedHoot._id:
+    setGarage(garage.cars.filter((car) => car._id !== deletedCar._id));
+    // Redirect the user:
+    navigate(`/${userId}/garages/${garageId}`);
+    };
 
-      const handleEditCar = async (formData) => {
-        // console.log(userId, garageId, carId, formData)
-        const updatedCar = await garageService.updateCar(userId, garageId, carId, formData);
-        setCar(updatedCar)
-        toggleEditCar(false)
-      }
+    const handleEditCar = async (formData) => {
+    // console.log(userId, garageId, carId, formData)
+    const updatedCar = await garageService.updateCar(userId, garageId, carId, formData);
+    setCar(updatedCar)
+    toggleEditCar(false)
+    }
+
+    const handleEditComment = async (commentId, formData) => {
+    garageService.updateCarComment(userId, garageId, carId, commentId, formData);
+    setCar(car)
+    toggleEditComment('')
+    }
       
-      const toggleEditCar = () => {
+    const toggleEditCar = () => {
         editCar ? setEditCar(false) : setEditCar(true)
+    }
+
+    const toggleEditComment = (commentId) => {
+        setEditComment(commentId)
     }
 
 
@@ -104,31 +115,27 @@ const CarShow = () => {
         <section>
             <h2>Comments</h2>
             <CarCommentForm handleAddComment={handleAddComment} />
-
             {!car.comments.length && <p>There are no comments.</p>}
 
             {car.comments.map((comment) => (
                 <article key={comment._id}>
-                <header>
-                    <div>
-                    {comment.author.username} 
-                    {new Date(comment.createdAt).toLocaleDateString()}
-                    <br />
-                    {console.log(comment.author.username)}
-                    {comment.author._id === userId && (
-                    <>
-                        <Link to={`/${userId}/garages/${garageId}/${carId}/comments/${comment._id}/edit`}>
-                        Edit
-                        </Link>
-                        <button onClick={() => handleDeleteComment(comment._id)}>
-                        Delete
-                        </button>
-                    </>
-                    )}
+                    <div className="comment-box">
+                        {comment.author.username} {" "}posted on{" "}
+                        {new Date(comment.createdAt).toLocaleDateString()}
+                        <br />
+                        <p>{comment.text}</p>
+                        {comment.author._id === userId && (
+                        <>
+                            <button onClick={() => toggleEditComment(comment._id)}>Edit</button>
+                            {editComment === comment._id && <CarCommentForm handleEditComment={handleEditComment} carId={carId} commentId={comment._id}/> }
+                            <button onClick={() => handleDeleteComment(comment._id)}>
+                            Delete
+                            </button>
+                        </>
+                        )}
                     </div>
-                </header>
-                <p>{comment.text}</p>
                 </article>
+
             ))}
             </section>
     </div>

@@ -1,9 +1,18 @@
 import { Link } from 'react-router-dom'
 // import styles from './GarageList.module.css'
 
-const GarageList = (props) => {
+// useEffect(() => {
+//     const fetchgarage = async () => {
+//       const carData = await garageService.show(userId, garageId, carId);
+//       setFormData(carData.comments.find((comment) => comment._id === props.comment._id));
+//     };
+//     if (props.carId && props.comment_id) fetchComment();
+//   }, [userId, garageId, carId, props.comment_id]);
+
+const Profile = (props) => {
+    // const currentGarages = props.garages.filter((garage) => )
     return (
-        <div className = "garageList">
+        <div className = "profile">
             <ul>
             {props.garages.map((garage) => (
                 <li key={garage._id}>
@@ -21,4 +30,4 @@ const GarageList = (props) => {
     )
 }
 
-export default GarageList;
+export default Profile;
