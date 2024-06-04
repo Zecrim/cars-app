@@ -8,6 +8,7 @@ import SigninForm from './components/SigninForm/SigninForm';
 import Garage from './components/Garage/Garage';
 import NewGarageForm from './components/NewGarageForm/NewGarageForm';
 import CarShow from './components/CarShow/CarShow';
+import Profile from './components/Profile/Profile';
 import * as authService from '../src/services/authService'; // import the authservice
 import * as garageService from './services/garageService'
 
@@ -53,7 +54,8 @@ const App = () => {
         <Routes>
           {user ? (
             <>
-            <Route path="/" element={<Dashboard user={user} garages={garages}/>} />
+            <Route path="/" element={<Dashboard user={user} garages={garages} />} />
+            <Route path="/:userId" element={<Profile garages={garages} />} />
             <Route path='/:userId/garages/:garageId' element={<Garage garages={garages} setGarages={setGarages} />} />
             <Route path='/:userId/garages/:garageId/:carId' element={<CarShow  />} />
             </>

@@ -6,17 +6,16 @@ import * as garageService from '../../services/garageService';
 
 const CarCommentForm = (props) => {
   const [formData, setFormData] = useState({ text: '' });
-  const { userId, garageId, carId, commentId } = useParams();
+  const { userId, garageId, carId } = useParams();
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchCar = async () => {
-      const carData = await garageService.show(userId, garageId, carId);
-      // Find comment in fetched hoot data
-      setFormData(carData.comments.find((comment) => comment._id === commentId));
+    const fetchComment = async () => {
+      const carData = await garageService.carShow(userId, garageId, carId);
+      setFormData(carData.comments.find((comment) => comment._id === props.commentId));
     };
-    if (carId && commentId) fetchCar();
-  }, [userId, garageId, carId, commentId]);
+    if (props.carId && props.commentId) fetchComment();
+  }, [userId, garageId, carId, props.comment_id]);
   
 
   const handleChange = (evt) => {
@@ -25,17 +24,16 @@ const CarCommentForm = (props) => {
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    if (carId && commentId) {
-        garageService.updateComment(userId, garageId, carId, commentId, formData);
-        navigate(`/${userId}/garages/${garageId}/cars/${carId}`);
+    if (props.carId && props.commentId) {
+        props.handleEditComment(props.commentId, formData)
       } else {
         props.handleAddComment(formData);
       }
       setFormData({ text: '' });
     };
 
-    if (carId && commentId) return (
-        <main className={styles.container}>
+    if (props.carId && props.commentId) return (
+        <main className="carCommentForm">
           <form onSubmit={handleSubmit}>
             <h1>Edit Comment</h1>
             <label htmlFor="text-input">Your comment:</label>

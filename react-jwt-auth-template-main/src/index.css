@@ -107,3 +107,7 @@ button:focus-visible {
   margin: 0;
   font-size: 1.2em;
 }
+
+.commment-box {
+  border: 2px solid black;
+}

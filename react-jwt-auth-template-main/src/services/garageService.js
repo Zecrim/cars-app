@@ -143,7 +143,7 @@ const carShow = async (userId, garageId, carId) => {
     }
   };
 
-  const editCarComment = async (userId, garageId, carId, commentId, formData) => {
+  const updateCarComment = async (userId, garageId, carId, commentId, formData) => {
     try {
         // console.log('userid: '+userId+' formdata '+formData)
         // console.log(`fetching to: ${BASE_URL}/${userId}/garages/`)
@@ -185,6 +185,6 @@ const carShow = async (userId, garageId, carId) => {
     updateCar,
     createCarComment,
     deleteCarComment,
-    editCarComment,
+    updateCarComment,
     deleteGarage
   }
