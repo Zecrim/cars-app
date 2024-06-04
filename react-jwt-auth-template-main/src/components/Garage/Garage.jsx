@@ -95,7 +95,7 @@ const Garage = (props) => {
             {userId === garageOwner && (
                 <button className="toggleButton" onClick={toggleNewCar}>Add a Car</button>
             )}
-                {newCar && <NewCarForm handleNewCar={handleNewCar} />}
+                {newCar && <NewCarForm handleNewCar={handleNewCar} toggleNewCar={toggleNewCar} />}
                 
             </div>
             {isFormVisible && (

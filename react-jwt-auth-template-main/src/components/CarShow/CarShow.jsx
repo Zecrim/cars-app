@@ -94,8 +94,8 @@ const CarShow = () => {
             <span>Year: {car.year}</span>
             {garage.owner === userId && !editCar && (
                 <>
-                <button onClick={() => toggleEditCar(car)}>Modify Car</button>
-                <button onClick={() => handleDeleteCar(carId)}>Sell Car (delete)</button>
+                <button onClick={() => toggleEditCar(car)}>🔧</button>
+                <button onClick={() => handleDeleteCar(carId)}>Sell Car (🗑️)</button>
                 </>
                 )}
         </div>
@@ -118,11 +118,13 @@ const CarShow = () => {
                             <Link to={`/${comment.author._id}`}>
                                 {comment.author.username}
                             </Link>
-                        {" "}posted on{" "}
-                        {new Date(comment.createdAt).toLocaleDateString()}
+                            {" "}posted on{" "}
+                            {new Date(comment.createdAt).toLocaleDateString()}
                         </div>
-                        <div>
-                            {comment.text}
+                        <div className='car-comment-items'>
+                            <div className='car-comment-text'>
+                                {comment.text}
+                            </div>
                             {comment.author._id === userId && (
                             <>
                                 <button onClick={() => toggleEditComment(comment._id)}>✏️</button>

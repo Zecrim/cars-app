@@ -55,6 +55,7 @@ const CarCommentForm = (props) => {
     <main className="car-comment-form">
     <form onSubmit={handleSubmit}>
       <label htmlFor="text-input">New comment:</label>
+      <br />
       <textarea
         required
         type="text"
@@ -62,9 +63,9 @@ const CarCommentForm = (props) => {
         id="text-input"
         value={formData.text}
         onChange={handleChange}
-      />
+      /><br/>
       <button type="submit">
-        Create
+        Add Comment
       </button>
     </form>
     </main>

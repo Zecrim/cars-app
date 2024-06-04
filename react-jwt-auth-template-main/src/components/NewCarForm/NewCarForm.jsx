@@ -90,6 +90,7 @@ const NewCarForm = (props) => {
                     onChange={handleChange}
                 /><br/>
             <button type="submit">🚘Submit Changes🚘</button>
+            <button onClick={props.toggleEditCar}>🚫Cancel🚫</button>
             </form>
         </>
     );
@@ -142,6 +143,7 @@ const NewCarForm = (props) => {
                     onChange={handleChange}
                 /><br/>
             <button type="submit">🚘Create New Car🚘</button>
+            <button onClick={props.toggleNewCar}>🚫Cancel🚫</button>
             </form>
         </>
     );

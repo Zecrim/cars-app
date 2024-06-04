@@ -1,5 +1,5 @@
 * {
-  width: 100%;
+  /* width: 100%; */
   padding: 0;
   margin: 0;
   box-sizing: border-box; 
@@ -44,11 +44,11 @@ body {
   min-height: 100vh;
 }
 
-div {
+/* div {
   display: flex;
-  /* justify-content: center; */
+  justify-content: center;
   align-items: center;
-}
+} */
 
 nav {
   position: absolute;
@@ -58,18 +58,20 @@ nav {
   left: 0;
   width: 100%;
   text-align: center;
+  font-size: 1.5rem;
+  align-content: space-between;
   padding-top: 2%;
 }
 
 nav ul {
   display: flex;
-  list-style-type: none;
-  /* justify-content: center; */
+  width: 100%;
+  list-style-type: none;  /* justify-content: center; */
 }
 
 nav li {
   /* justify-content: center; */
-  
+  width: 100%;
 }
 
 nav a {
@@ -82,6 +84,7 @@ h1 {
 }
 
 button {
+  color: rgba(255, 255, 255, 0.87);
   width: auto;
   border-radius: 8px;
   border: 1px solid transparent;
@@ -106,47 +109,83 @@ button:focus-visible {
 }
 
 .car-show {
+  width: 90vw;
   display: flex;
   flex-direction: column;
-  padding-top: 6%;
+  padding-top: 8%;
+}
+
+.carImage {
+  max-width: 100%;
+  max-height: auto;
 }
 
 .car-details {
   display: flex;
-  align-content: space-evenly;
-  max-width: 90%;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 90vw;
   max-height: auto;
   overflow: hidden;
+  font-size: 1.5rem;
+
+  &button {
+    outline-style: none;
+    border: none;
+    background-color: none;
+  }
 }
 
 .car-comments-box {
   display: flex;
+  /* flex-wrap: wrap; */
+  max-width: 90vw;
+  border: solid darkslategray;
+  padding: 15px;
 }
 
 .car-comments {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  max-height: 40vh;
+  overflow-x: hidden;
+}
+
+.car-comment-items {
+  max-width: 55vw;
+  overflow: auto;
+  word-break: break-all;
+}
+
+.car-comment-text {
+  text-wrap: wrap;
 }
 
 .car-comment-tools {
   display: flex;
   flex-direction: column;
+  width: 45vw;
+  input, textarea {
+    width: 90%;
+    height: 6rem;
+    font-size: 1.2rem;
+  } 
 }
 
 .comment-box {
   display: flex;
-  border: 2px solid red;
+  border: 1px solid darkslategray;
   padding: .5em;
 }
 
-.carImage {
-  max-width: 90%;
-  max-height: auto;
-  overflow: hidden;
+.comment-author {
+  display: flex;
+  align-items: center;
 }
 
 .carImage img {
-  width: 100%;
+  width: 90vw;
   height: auto;
 }
 
@@ -189,8 +228,7 @@ button:focus-visible {
   background-color: rgb(25, 26, 26);
   border-radius: 25px;
   font-family: sans-serif;
-  padding: 4%;
-  width: 35%;
+  padding: 50%;
   margin: 0 auto;
 }
 .sign-in-up input {
@@ -204,7 +242,6 @@ button:focus-visible {
   color: black;
   border-radius: 25px;
   font-family: sans-serif;
-  padding: 4%;
   margin: 3.5% 0;
 }
 
