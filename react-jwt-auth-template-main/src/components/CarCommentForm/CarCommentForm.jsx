@@ -33,10 +33,10 @@ const CarCommentForm = (props) => {
     };
 
     if (props.carId && props.commentId) return (
-        <main className="carCommentForm">
+        <main className="car-comment-form">
           <form onSubmit={handleSubmit}>
-            <h1>Edit Comment</h1>
-            <label htmlFor="text-input">Your comment:</label>
+            <h3>Edit Comment</h3>
+            <label htmlFor="text-input">Updated comment:</label>
             <textarea
               required
               type="text"
@@ -52,6 +52,7 @@ const CarCommentForm = (props) => {
       );
 
   return (
+    <main className="car-comment-form">
     <form onSubmit={handleSubmit}>
       <label htmlFor="text-input">Your comment:</label>
       <textarea
@@ -66,6 +67,7 @@ const CarCommentForm = (props) => {
         Create
       </button>
     </form>
+    </main>
   );
 };
 

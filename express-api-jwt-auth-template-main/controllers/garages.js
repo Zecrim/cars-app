@@ -226,7 +226,10 @@ router.post('/:garageId/:carId/comments', async (req, res) => {
 
 router.put('/:garageId/:carId/comments/:commentId', async (req, res) => {
   try {
-    const garage = await Garage.findById(req.params.garageId);
+    const garage = await Garage.findById(req.params.garageId)
+    .populate({
+      path: 'cars.comments.author',
+  })
     const car = garage.cars.id(req.params.carId);
     const comment = car.comments.id(req.params.commentId)
     comment.text = req.body.text
