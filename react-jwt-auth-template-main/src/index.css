@@ -182,3 +182,43 @@ button:focus-visible {
   background-color: slateblue;
   border: 2px solid black;
 }
+
+.sign-in-up {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(25, 26, 26);
+  border-radius: 25px;
+  font-family: sans-serif;
+  padding: 4%;
+  width: 35%;
+  margin: 0 auto;
+}
+.sign-in-up input {
+  margin: 1% 0 8% 0;
+  color: white;
+}
+.sign-in-up button {
+  width: 100%;
+  background-color: rgb(40, 182, 218);
+  border: none;
+  color: black;
+  border-radius: 25px;
+  font-family: sans-serif;
+  padding: 4%;
+  margin: 3.5% 0;
+}
+
+.sign-in-up button:hover {
+  color: aqua;
+  cursor: pointer;
+}
+
+.sign-in-up div {
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.sign-in-up label {
+  margin-bottom: 5px;
+  color: white;
+}
