@@ -6,13 +6,14 @@ import * as garageService from '../../services/garageService';
 
 
 const NewGarageForm = (props) => {
-  const [formData, setFormData] = useState({ name: '' });
+  const emptyForm = { name: '' };
+  const [formData, setFormData] = useState(emptyForm);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGarage = async () => {
-      const garageData = await garageService.show(props.garageId);
-      setFormData(garageData.name);
+      const garageData = await garageService.show(props.userId, props.garageId);
+      setFormData({ name: garageData.name });
     };
     if (props.garageId) fetchGarage();
   }, [props.garageId]);
@@ -25,40 +26,16 @@ const NewGarageForm = (props) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     if (props.garageId) {
-      // actually we'll want to do the same thing and lift the editGarage function up to the garage itself (same way we did for EditCar)
-        garageService.updateGarage(props.garageId, formData); // make this return the garage and then use the garage to populate the formData
-        //probably don't need navigate- we'll already be on the garage if we're editing it
-        navigate(`/garages/${props.garageId}`);
+      props.handleEditGarage(formData);
     } else {
-        props.handleNewGarage(formData);
+      props.handleNewGarage(formData);
     }
-        setFormData({ name: '' });
-    };
-
-    <div className="editGarage">
-        {editGarage && <NewGarageForm garage={garage} toggleEditGarage={toggleEditGarage} handleEditGarage={handleEditGarage}/>}
-    </div>
-
-    if (props.garageId) return (
-        <main className={styles.container}>
-          <form onSubmit={handleSubmit}>
-            <h1>Edit Garage Name</h1>
-            <label htmlFor="text-input">Garage Name:</label>
-            <input
-              required
-              type="text"
-              name="name"
-              id="text-input"
-              value={formData.name}
-              onChange={handleChange}
-            />
-            <button type="submit">Change Garage Name</button>
-          </form>
-        </main>
-      );
+    setFormData(emptyForm);
+  };
 
   return (
     <form onSubmit={handleSubmit}>
+      <h1>{props.garageId ? 'Edit Garage Name' : 'New Garage Information'}</h1>
       <label htmlFor="text-input">Garage Name:</label>
       <input
         required
@@ -67,8 +44,8 @@ const NewGarageForm = (props) => {
         id="text-input"
         value={formData.name}
         onChange={handleChange}
-      />
-      <button type="submit">Create new garage</button>
+      /><br/>
+      <button type="submit">{props.garageId ? 'Change Garage Name' : 'Create New Garage'}</button>
     </form>
   );
 };

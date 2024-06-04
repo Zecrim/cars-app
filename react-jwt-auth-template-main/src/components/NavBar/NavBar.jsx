@@ -16,6 +16,7 @@ const NavBar = (props) => {
           <ul>
             <li><Link to="/">Dashboard</Link></li>
             <li><button onClick={newButtonClick}>Add a Garage</button></li>
+            <li><Link to={`${user._id}`}>Profile</Link></li>
             <li><Link to="" onClick={props.handleSignout}>Sign Out</Link></li>
           </ul>
         </nav>
