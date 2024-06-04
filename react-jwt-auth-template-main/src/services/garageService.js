@@ -175,6 +175,22 @@ const carShow = async (userId, garageId, carId) => {
     }
   };
 
+  const updateGarage = async (userId, garageId, formData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   export {
     index,
     show,
@@ -186,5 +202,6 @@ const carShow = async (userId, garageId, carId) => {
     createCarComment,
     deleteCarComment,
     updateCarComment,
-    deleteGarage
+    deleteGarage,
+    updateGarage
   }

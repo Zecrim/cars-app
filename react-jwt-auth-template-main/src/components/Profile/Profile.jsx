@@ -1,22 +1,26 @@
-import { Link } from 'react-router-dom'
-// import styles from './GarageList.module.css'
+import { Link, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react';
 
-// useEffect(() => {
-//     const fetchgarage = async () => {
-//       const carData = await garageService.show(userId, garageId, carId);
-//       setFormData(carData.comments.find((comment) => comment._id === props.comment._id));
-//     };
-//     if (props.carId && props.comment_id) fetchComment();
-//   }, [userId, garageId, carId, props.comment_id]);
 
 const Profile = (props) => {
-    // const currentGarages = props.garages.filter((garage) => )
+    const {userId} = useParams()
+
+    const [myGarages, setMyGarages] = useState([])
+    useEffect(() => {
+        const fetchgarages = async () => {
+            const myGarageList = props.garages.filter(garage => garage.owner._id === userId);
+            setMyGarages(myGarageList);
+        };
+        if (userId) fetchgarages();
+      }, [userId, props.garages]);
+
     return (
         <div className = "profile">
+            <h1>{myGarages[0]?.owner.username}'s Garages</h1>
             <ul>
-            {props.garages.map((garage) => (
+            {myGarages.map((garage) => (
                 <li key={garage._id}>
-                <Link to={`/${props.userId}/garages/${garage._id}`}>
+                <Link to={`/${userId}/garages/${garage._id}`}>
                     <div>
                         <h2>{garage.name}</h2>
                         <p>{garage.owner.username}</p>

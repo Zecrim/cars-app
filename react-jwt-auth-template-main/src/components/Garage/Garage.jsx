@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import CarList from '../CarList/CarList'
 import NewCarForm from '../NewCarForm/NewCarForm'
+import NewGarageForm from '../NewGarageForm/NewGarageForm';
 import * as garageService from '../../services/garageService'
-
-
 
 const Garage = (props) => {
 
@@ -14,7 +13,14 @@ const Garage = (props) => {
     const [garageOwner, setGarageOwner] = useState('')
     const [cars, setCars] = useState([])
     const [garages, setGarages] = useState([])
+    const [editGarage, setEditGarage] = useState(null);
+    const [isFormVisible, setIsFormVisible] = useState(false);
     const navigate = useNavigate()
+
+    const toggleForm = () => {
+        setIsFormVisible(!isFormVisible);
+        setEditGarage(null); 
+      };
 
     const fetchGarages = async () => {
         const fetchedGarages = await garageService.show(userId, garageId);
@@ -55,12 +61,33 @@ const Garage = (props) => {
         }
     };
 
+    const handleNewGarage = async (formData) => {
+        const newGarage = await garageService.createGarage(formData);
+        setGarages([...garages, newGarage]);
+        toggleForm(); // Hide the form after creating a new garage
+      };
+    
+      const handleEditGarage = async (formData) => {
+        const updatedGarage = await garageService.updateGarage(userId, garageId, formData);
+        setGarageName(updatedGarage.name);
+        setEditGarage(false)
+
+        toggleForm(); // Hide the form after editing the garage
+      };
+    
+      const handleEditButtonClick = () => {
+        setIsFormVisible(true);  // Show the form when editing
+      };
+
     return (
         <>
             <div>
                 <h1>Welcome to {garageName}</h1>
-                {userId === garageOwner && (
-                    <button onClick={() => handleDeleteGarage(garageId)}>Delete Garage</button>
+                {userId === garageOwner && (!isFormVisible) && (
+                    <>
+                        <button onClick={() => handleDeleteGarage(garageId)}>Delete Garage</button>
+                        <button onClick={handleEditButtonClick}>Edit Garage</button>
+                    </>
                 )}
             </div>
             <CarList cars={cars}/>
@@ -71,6 +98,14 @@ const Garage = (props) => {
                 {newCar && <NewCarForm handleNewCar={handleNewCar} />}
                 
             </div>
+            {isFormVisible && (
+                <NewGarageForm
+                userId={userId}
+                garageId={garageId}
+                handleNewGarage={handleNewGarage}
+                handleEditGarage={handleEditGarage}
+                />
+            )}
         </>
      )
 }

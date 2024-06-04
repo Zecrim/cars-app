@@ -55,7 +55,7 @@ const App = () => {
           {user ? (
             <>
             <Route path="/" element={<Dashboard user={user} garages={garages} />} />
-            <Route path="/:userId" element={<Profile garages={garages} />} />
+            <Route path="/:userId" element={<Profile user={user} garages={garages}/>} />
             <Route path='/:userId/garages/:garageId' element={<Garage garages={garages} setGarages={setGarages} />} />
             <Route path='/:userId/garages/:garageId/:carId' element={<CarShow  />} />
             </>
