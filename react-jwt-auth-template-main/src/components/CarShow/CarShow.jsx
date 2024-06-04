@@ -124,15 +124,16 @@ const CarShow = () => {
                         {new Date(comment.createdAt).toLocaleDateString()}
                         <br />
                         <p>{comment.text}</p>
-                        {comment.author._id === userId && (
+                        {comment.author._id === userId && !editComment && (
                         <>
                             <button onClick={() => toggleEditComment(comment._id)}>Edit</button>
-                            {editComment === comment._id && <CarCommentForm handleEditComment={handleEditComment} carId={carId} commentId={comment._id}/> }
                             <button onClick={() => handleDeleteComment(comment._id)}>
                             Delete
                             </button>
+
                         </>
                         )}
+                        {editComment === comment._id && <CarCommentForm handleEditComment={handleEditComment} carId={carId} commentId={comment._id}/> }
                     </div>
                 </article>
 
