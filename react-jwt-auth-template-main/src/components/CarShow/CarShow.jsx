@@ -57,9 +57,9 @@ const CarShow = () => {
     }
 
     const handleEditComment = async (commentId, formData) => {
-    garageService.updateCarComment(userId, garageId, carId, commentId, formData);
-    setCar(car)
-    toggleEditComment('')
+    const returnedCar = await garageService.updateCarComment(userId, garageId, carId, commentId, formData);
+    console.log(returnedCar)
+    setCar(returnedCar)
     }
       
     const toggleEditCar = () => {

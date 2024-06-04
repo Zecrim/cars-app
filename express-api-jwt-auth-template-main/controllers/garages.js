@@ -238,7 +238,7 @@ router.put('/:garageId/:carId/comments/:commentId', async (req, res) => {
     // newComment._doc.author = req.user; //confused about what this accomplishes
 
     // Respond with the newComment:
-    res.status(200).json(comment);
+    res.status(200).json(car);
   } catch (error) {
     res.status(500).json(error);
   }
