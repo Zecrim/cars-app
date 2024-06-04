@@ -58,8 +58,8 @@ const CarShow = () => {
 
     const handleEditComment = async (commentId, formData) => {
     const returnedCar = await garageService.updateCarComment(userId, garageId, carId, commentId, formData);
-    console.log(returnedCar)
     setCar(returnedCar)
+    setEditComment('')
     }
       
     const toggleEditCar = () => {
@@ -104,7 +104,7 @@ const CarShow = () => {
         {editCar && <NewCarForm car={car} toggleEditCar={toggleEditCar} handleEditCar={handleEditCar}/>}
         </div>
 
-        {garage.owner === userId && (
+        {garage.owner === userId && !editCar && (
             <>
             <button onClick={() => toggleEditCar(car)}>Modify Car</button>
             <button onClick={() => handleDeleteCar(carId)}>Sell Car (delete)</button>
@@ -114,7 +114,7 @@ const CarShow = () => {
         </section>
         <section>
             <h2>Comments</h2>
-            <CarCommentForm handleAddComment={handleAddComment} />
+            {!editComment && <CarCommentForm handleAddComment={handleAddComment} />}
             {!car.comments.length && <p>There are no comments.</p>}
 
             {car.comments.map((comment) => (

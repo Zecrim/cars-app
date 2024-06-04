@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom'
-import * as carService from '../../services/garageService';
 // import styles from './NewGarageForm.module.css';
 // import Icon from '../Icon/Icon';
 
@@ -15,7 +14,6 @@ const NewCarForm = (props) => {
     }
 
     const [formData, setFormData] = useState(emptyForm);
-    const navigate = useNavigate()
     const handleChange = (evt) => {
         setFormData({ ...formData, [evt.target.name]: evt.target.value });
     };
@@ -38,9 +36,6 @@ const NewCarForm = (props) => {
         evt.preventDefault();
         if (props.car) {
             props.handleEditCar(formData)
-            // console.log(props.car._id, formData)
-            // carService.updateCar(props.car._id, formData);
-            // props.toggleEditCar(false)
         } else {
             props.handleNewCar(formData);
         }
@@ -94,7 +89,7 @@ const NewCarForm = (props) => {
                     value={formData.imgURL}
                     onChange={handleChange}
                 /><br/>
-            <button type="submit">Modify Car</button>
+            <button type="submit">Submit Changes</button>
             </form>
         </>
     );
