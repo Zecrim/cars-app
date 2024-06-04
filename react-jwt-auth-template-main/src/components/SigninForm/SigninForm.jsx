@@ -32,7 +32,7 @@ const SigninForm = (props) => {
   };
 
   return (
-    <main>
+    <main className='sign-in-up'>
       <h1>Log In</h1>
       <p>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit}>
