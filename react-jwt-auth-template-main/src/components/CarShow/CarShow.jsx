@@ -83,64 +83,60 @@ const CarShow = () => {
         </>
     )
     return (
-    <>
-    <div className="carShow">
-        Sweet car, bro!
-        <section>
+    <div className="car-show">
         <div className="carImage">
             <img src={car.imgURL} alt="Car" />
         </div>
-        <div className="carDetails">
-            <div className="carStats">
-                <p>
-                    Make: {car.make} <br />
-                    Model: {car.model} <br />
-                    Color: {car.color} <br />
-                    Year: {car.year} <br />
-                </p>
-            </div>
-            
+        <div className="car-details">
+            <span>Make: {car.make}</span>
+            <span>Model: {car.model}</span>
+            <span>Color: {car.color}</span>
+            <span>Year: {car.year}</span>
+            {garage.owner === userId && !editCar && (
+                <>
+                <button onClick={() => toggleEditCar(car)}>Modify Car</button>
+                <button onClick={() => handleDeleteCar(carId)}>Sell Car (delete)</button>
+                </>
+                )}
+        </div>
         <div className="editCar">
-        {editCar && <NewCarForm car={car} toggleEditCar={toggleEditCar} handleEditCar={handleEditCar}/>}
+            {editCar && <NewCarForm car={car} toggleEditCar={toggleEditCar} handleEditCar={handleEditCar}/>}
         </div>
-
-        {garage.owner === userId && !editCar && (
-            <>
-            <button onClick={() => toggleEditCar(car)}>Modify Car</button>
-            <button onClick={() => handleDeleteCar(carId)}>Sell Car (delete)</button>
-            </>
-        )}
-        </div>
-        </section>
-        <section>
+        <div className="car-comments-box">
+            <div className='car-comment-tools'>
             <h2>Comments</h2>
             {!editComment && <CarCommentForm handleAddComment={handleAddComment} />}
+            </div>
+
+            <div className='car-comments'>
             {!car.comments.length && <p>There are no comments.</p>}
 
             {car.comments.map((comment) => (
                 <article key={comment._id}>
                     <div className="comment-box">
-                        {comment.author.username} {" "}posted on{" "}
+                        <div className='comment-author'>
+                            <Link to={`/${comment.author._id}`}>
+                                {comment.author.username}
+                            </Link>
+                        {" "}posted on{" "}
                         {new Date(comment.createdAt).toLocaleDateString()}
-                        <br />
-                        <p>{comment.text}</p>
-                        {comment.author._id === userId && !editComment && (
-                        <>
-                            <button onClick={() => toggleEditComment(comment._id)}>Edit</button>
-                            <button onClick={() => handleDeleteComment(comment._id)}>
-                            Delete
-                            </button>
-
-                        </>
-                        )}
-                        {editComment === comment._id && <CarCommentForm handleEditComment={handleEditComment} carId={carId} commentId={comment._id}/> }
+                        </div>
+                        <div>
+                            {comment.text}
+                            {comment.author._id === userId && (
+                            <>
+                                <button onClick={() => toggleEditComment(comment._id)}>✏️</button>
+                                {editComment === comment._id && <CarCommentForm handleEditComment={handleEditComment} carId={carId} commentId={comment._id}/> }
+                                <button onClick={() => handleDeleteComment(comment._id)}>🗑️</button>
+                            </>
+                            )}
+                        </div>
                     </div>
                 </article>
-
             ))}
-            </section>
+            </div>
+        </div>
     </div>
-    </>
     )
 }
 

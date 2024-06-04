@@ -80,20 +80,20 @@ const Garage = (props) => {
       };
 
     return (
-        <>
+        <main className='garage'>
             <div>
                 <h1>Welcome to {garageName}</h1>
                 {userId === garageOwner && (!isFormVisible) && (
                     <>
-                        <button onClick={() => handleDeleteGarage(garageId)}>Delete Garage</button>
-                        <button onClick={handleEditButtonClick}>Edit Garage</button>
+                        <button onClick={handleEditButtonClick}>✏️</button>
+                        <button onClick={() => handleDeleteGarage(garageId)}>🗑️</button>
                     </>
                 )}
             </div>
             <CarList cars={cars}/>
             <div className="garage">
             {userId === garageOwner && (
-                <button onClick={toggleNewCar}>Add a Car</button>
+                <button className="toggleButton" onClick={toggleNewCar}>Add a Car</button>
             )}
                 {newCar && <NewCarForm handleNewCar={handleNewCar} />}
                 
@@ -106,7 +106,7 @@ const Garage = (props) => {
                 handleEditGarage={handleEditGarage}
                 />
             )}
-        </>
+        </main>
      )
 }
 

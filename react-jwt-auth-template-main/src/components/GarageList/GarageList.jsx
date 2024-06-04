@@ -10,8 +10,10 @@ const GarageList = (props) => {
                 <Link to={`/${props.userId}/garages/${garage._id}`}>
                     <div>
                         <h2>{garage.name}</h2>
-                        <p>{garage.owner.username}</p>
                     </div>
+                </Link>
+                <Link to={`/${props.userId}`}>
+                    <p>{garage.owner.username}</p>
                 </Link>
                 </li>
             )

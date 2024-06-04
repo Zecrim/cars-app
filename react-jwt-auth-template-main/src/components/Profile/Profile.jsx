@@ -14,22 +14,28 @@ const Profile = (props) => {
         if (userId) fetchgarages();
       }, [userId, props.garages]);
 
+      const newButtonClick = () => {
+        props.toggleNewGarage()
+      }
+
     return (
         <div className = "profile">
             <h1>{myGarages[0]?.owner.username}'s Garages</h1>
             <ul>
             {myGarages.map((garage) => (
-                <li key={garage._id}>
-                <Link to={`/${userId}/garages/${garage._id}`}>
-                    <div>
-                        <h2>{garage.name}</h2>
-                        <p>{garage.owner.username}</p>
-                    </div>
-                </Link>
-                </li>
+                <>
+                    <li key={garage._id}>
+                    <Link to={`/${userId}/garages/${garage._id}`}>
+                        <div>
+                            <h2>{garage.name}</h2>
+                        </div>
+                    </Link>
+                    </li>
+                </>
             )
             )}
             </ul>
+            <button onClick={newButtonClick}>Add a Garage</button>
         </div>
     )
 }

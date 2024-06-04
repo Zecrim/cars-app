@@ -47,15 +47,14 @@ const App = () => {
       <AuthedUserContext.Provider value={user}>
         <NavBar 
           user={user} 
-          handleSignout={handleSignout} 
-          toggleNewGarage={toggleNewGarage} 
+          handleSignout={handleSignout}  
         />
         {newGarage && <NewGarageForm handleNewGarage={handleNewGarage}/>}
         <Routes>
           {user ? (
             <>
-            <Route path="/" element={<Dashboard user={user} garages={garages} />} />
-            <Route path="/:userId" element={<Profile user={user} garages={garages}/>} />
+            <Route path="/" element={<Dashboard user={user} garages={garages} toggleNewGarage={toggleNewGarage} />} />
+            <Route path="/:userId" element={<Profile user={user} garages={garages} toggleNewGarage={toggleNewGarage} />} />
             <Route path='/:userId/garages/:garageId' element={<Garage garages={garages} setGarages={setGarages} />} />
             <Route path='/:userId/garages/:garageId/:carId' element={<CarShow  />} />
             </>
