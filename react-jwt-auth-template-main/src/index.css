@@ -19,7 +19,7 @@
   background-color: var(--background-color);
   background-size: cover;
   background-position: center;
-  transition: background-image 0.5s ease-in-out, background-color 0.5s ease-in-out;
+  transition: background-image 0.2s ease-in-out, background-color 0.2s ease-in-out;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -125,7 +125,7 @@ body {
   max-width: 90%;
   margin: 2% 3%;
   padding: 1%;
-  background-color: rgb(25, 26, 26);
+  background-color: rgb(25, 26, 26, 0.8);
   border-radius: 25px;
   font-size: 1.5rem;
   list-style: none;

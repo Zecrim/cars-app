@@ -10,8 +10,24 @@ const Profile = (props) => {
         const fetchgarages = async () => {
             const myGarageList = props.garages.filter(garage => garage.owner._id === userId);
             setMyGarages(myGarageList);
+            document.documentElement.style.setProperty(
+                '--background-image',
+                'url("https://wallpapercave.com/wp/wp4334175.jpg")'
+            );
+            document.documentElement.style.setProperty(
+                '--background-color',
+                'transparent'
+            );
         };
-        if (userId) fetchgarages();
+
+        if (userId) {
+            fetchgarages();
+        }
+
+        return () => {
+            document.documentElement.style.setProperty('--background-image', 'none');
+            document.documentElement.style.setProperty('--background-color', '#242424');
+        };
       }, [userId, props.garages]);
 
       const newButtonClick = () => {
@@ -21,6 +37,7 @@ const Profile = (props) => {
 
     return (
         <div className = "profile">
+            <div className="background-overlay"></div>
             <h1>{myGarages[0]?.owner.username}'s Garages</h1>
             <ul>
                 {myGarages.map((garage) => (
