@@ -1,14 +1,12 @@
-import { useState, useEffect, useContext} from 'react'
+import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import CarCommentForm from '../CarCommentForm/CarCommentForm.jsx';
 import NewCarForm from '../NewCarForm/NewCarForm'
-import { AuthedUserContext } from '../../App';
 import * as garageService from '../../services/garageService'
 
 const CarShow = () => {
 
     const {userId, garageId, carId} = useParams()
-    const user = useContext(AuthedUserContext)
     const [car, setCar] = useState()
     const [garage, setGarage] = useState()
     const navigate = useNavigate()

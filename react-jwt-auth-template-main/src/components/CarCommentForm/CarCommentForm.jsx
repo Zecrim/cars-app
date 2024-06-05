@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import * as garageService from '../../services/garageService';
 // import styles from './CommentForm.module.css';
 
@@ -7,7 +7,6 @@ import * as garageService from '../../services/garageService';
 const CarCommentForm = (props) => {
   const [formData, setFormData] = useState({ text: '' });
   const { userId, garageId, carId } = useParams();
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchComment = async () => {

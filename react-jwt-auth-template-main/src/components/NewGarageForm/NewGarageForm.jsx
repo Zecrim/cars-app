@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom'
 import * as garageService from '../../services/garageService';
-// import styles from './NewGarageForm.module.css';
-// import Icon from '../Icon/Icon';
 
 
 const NewGarageForm = (props) => {
   const emptyForm = { name: '' };
   const [formData, setFormData] = useState(emptyForm);
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchGarage = async () => {
@@ -16,7 +12,7 @@ const NewGarageForm = (props) => {
       setFormData({ name: garageData.name });
     };
     if (props.garageId) fetchGarage();
-  }, [props.garageId]);
+  }, [props.garageId, props.userId]);
   
 
   const handleChange = (evt) => {

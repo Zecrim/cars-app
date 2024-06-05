@@ -1,8 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'
-// import styles from './NewGarageForm.module.css';
-// import Icon from '../Icon/Icon';
-
 
 const NewCarForm = (props) => {
     const emptyForm = {
@@ -89,16 +85,18 @@ const NewCarForm = (props) => {
                     value={formData.imgURL}
                     onChange={handleChange}
                 /><br/>
-            <button type="submit">🚘Submit Changes🚘</button>
-            <button onClick={props.toggleEditCar}>🚫Cancel🚫</button>
+                <div className='new-car-form-buttons'>
+                    <button onClick={props.toggleEditCar}>🚫 Cancel 🚫</button>
+                    <button type="submit">🚘 Submit Changes 🚘</button>
+                </div>
             </form>
         </>
     );
 
     return (
-        <>
+        <main className='new-car-form'>
             <form onSubmit={handleSubmit}>
-            <h1>New Car Information</h1>
+            <h2>New Car Information</h2>
             <label htmlFor="text-input">Car Model:</label>
                 <input
                     required
@@ -142,10 +140,12 @@ const NewCarForm = (props) => {
                     value={formData.imgURL}
                     onChange={handleChange}
                 /><br/>
-            <button type="submit">🚘Create New Car🚘</button>
-            <button onClick={props.toggleNewCar}>🚫Cancel🚫</button>
+                <div className='new-car-form-buttons'>
+                    <button onClick={props.toggleNewCar}>🚫 Cancel 🚫</button>
+                    <button type="submit">🚘 Create New Car 🚘</button>
+                </div>
             </form>
-        </>
+        </main>
     );
 };
 

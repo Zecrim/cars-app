@@ -1,5 +1,4 @@
 * {
-  /* width: 100%; */
   padding: 0;
   margin: 0;
   box-sizing: border-box; 
@@ -32,8 +31,63 @@ a:hover {
 }
 
 .garage {
+  width: 90vw;
+  margin-top: 15%;
   display: flex;
   flex-direction: column;
+}
+
+.garage-header {
+  display: flex;
+  margin-bottom: 4%;
+
+  button {
+    margin-top: 1.5em;
+    padding: .7em;
+    background-color: transparent;
+    font-size: small;
+  }
+}
+
+.new-car-form {
+  background-color: transparent; /* Light grey background */
+  padding: 20px;
+  border: solid darkslategray;
+  border-radius: 5px; /* Slightly rounded corners for the form */
+  margin-bottom: 5vh;
+}
+
+.new-car-form label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block; /* Forces labels to be on new lines */
+}
+
+.new-car-form input {
+  background-color: gray; /* White background for inputs */
+  border: 1px solid #ccc; /* Light grey border */
+  border-radius: 3px; /* Rounded corners for inputs */
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 100%; /* Make inputs full width */
+}
+
+.new-car-form button {
+  background-color: #333; /* Dark grey button background */
+  color: #fff; /* White text for button */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Rounded corners for buttons */
+  padding: 10px 20px;
+  cursor: pointer; /* Indicate clickable element */
+}
+
+.new-car-form button:hover {
+  background-color: #444; /* Darker grey on hover */
+}
+
+.new-car-form-buttons {
+  display: flex;
+  justify-content: space-between;
 }
 
 body {
@@ -42,6 +96,15 @@ body {
   min-width: 320px;
   max-width: 90%;
   min-height: 100vh;
+}
+
+.dashboard, .profile {
+  margin-top: 15%;
+  width: 90vw;
+
+  li {
+    list-style-type: none;
+  }
 }
 
 /* div {
@@ -70,12 +133,7 @@ nav ul {
 }
 
 nav li {
-  /* justify-content: center; */
   width: 100%;
-}
-
-nav a {
-  /* justify-content: center; */
 }
 
 h1 {
@@ -85,27 +143,11 @@ h1 {
 
 button {
   color: rgba(255, 255, 255, 0.87);
-  width: auto;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  border: none;
   font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-.toggleButton {
-  font-size: 1.3rem; 
 }
 
 .car-show {
@@ -228,8 +270,8 @@ button:focus-visible {
   background-color: rgb(25, 26, 26);
   border-radius: 25px;
   font-family: sans-serif;
-  padding: 50%;
-  margin: 0 auto;
+  padding: 15%;
+  margin: 75% auto;
 }
 .sign-in-up input {
   margin: 1% 0 8% 0;
