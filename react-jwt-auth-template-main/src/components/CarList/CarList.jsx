@@ -13,7 +13,7 @@ const { userId, garageId } = useParams()
                         <li key={car._id} className="car-item">
                             <Link to={`/${userId}/garages/${garageId}/${car._id}`}>
                                 <img src={car.imgURL || 'placeholder.jpg'} alt={`${car.make} ${car.model}`} className="car-thumbnail" />
-                                <div className='car-details'>
+                                <div className='car-list-details'>
                                     <h2>{car.make} {car.model}</h2>
                                 </div>
                             </Link>

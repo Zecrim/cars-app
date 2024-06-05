@@ -11,7 +11,8 @@ const CarShow = () => {
     const [garage, setGarage] = useState()
     const navigate = useNavigate()
     const [editCar, setEditCar] = useState(false)
-    const [editComment, setEditComment] = useState('')
+    const [editComment, setEditComment] = useState(false)
+    const [editCommentId, setEditCommentId] = useState('')
     
 
     useEffect(() => {
@@ -38,7 +39,7 @@ const CarShow = () => {
         };
       }, [userId, garageId, carId]);
 
-      const handleAddComment = async (commentFormData) => {
+    const handleAddComment = async (commentFormData) => {
         const newComment = await garageService.createCarComment(userId, garageId, carId, commentFormData);
         setCar({ ...car, comments: [...car.comments, newComment] });
     };
@@ -79,7 +80,8 @@ const CarShow = () => {
     }
 
     const toggleEditComment = (commentId) => {
-        setEditComment(commentId)
+        editComment? setEditComment(false) : setEditComment(true)
+        editComment && setEditCommentId(commentId)
     }
 
 
@@ -119,6 +121,7 @@ const CarShow = () => {
             <div className='car-comment-tools'>
             <h2>Comments</h2>
             {!editComment && <CarCommentForm handleAddComment={handleAddComment} />}
+            {editComment && <CarCommentForm handleEditComment={handleEditComment} carId={carId} commentId={editCommentId}/> }
             </div>
 
             <div className='car-comments'>
@@ -128,22 +131,27 @@ const CarShow = () => {
                 <article key={comment._id}>
                     <div className="comment-box">
                         <div className='comment-author'>
-                            <Link to={`/${comment.author._id}`}>
-                                {comment.author.username}
-                            </Link>
-                            {" "}posted on{" "}
-                            {new Date(comment.createdAt).toLocaleDateString()}
+                            <div className='comment-author-name'>
+                                <Link to={`/${comment.author._id}`}>
+                                    {comment.author.username}
+                                </Link>
+                                <div className='comment-author-post'>
+                                    {" "}posted on{" "}
+                                </div>
+                                <div className='comment-author-date'>
+                                    {new Date(comment.createdAt).toLocaleDateString()}
+                                </div>
+                            </div>
                         </div>
                         <div className='car-comment-items'>
                             <div className='car-comment-text'>
                                 {comment.text}
                             </div>
-                            {comment.author._id === userId && (
-                            <>
-                                <button onClick={() => toggleEditComment(comment._id)}>✏️</button>
-                                {editComment === comment._id && <CarCommentForm handleEditComment={handleEditComment} carId={carId} commentId={comment._id}/> }
-                                <button onClick={() => handleDeleteComment(comment._id)}>🗑️</button>
-                            </>
+                        {comment.author._id === userId && (
+                        <div className='car-comment-buttons'>
+                            <button onClick={() => toggleEditComment(comment._id)}>✏️</button>
+                            <button onClick={() => handleDeleteComment(comment._id)}>🗑️</button>
+                        </div>
                             )}
                         </div>
                     </div>
