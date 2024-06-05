@@ -20,8 +20,22 @@ const CarShow = () => {
           setCar(carData)
           const garageData = await garageService.show(userId, garageId)
           setGarage(garageData)
+          document.documentElement.style.setProperty(
+            '--background-image',
+            'url("https://wallpapercave.com/wp/wp4334210.jpg")'
+          );
+          document.documentElement.style.setProperty(
+            '--background-color',
+            'transparent'
+          );
         };
-        if (carId) fetchCar();
+        if (carId) {
+            fetchCar();
+        }
+        return () => {
+            document.documentElement.style.setProperty('--background-image', 'none');
+            document.documentElement.style.setProperty('--background-color', '#242424');
+        };
       }, [userId, garageId, carId]);
 
       const handleAddComment = async (commentFormData) => {
@@ -82,6 +96,7 @@ const CarShow = () => {
     )
     return (
     <div className="car-show">
+        <div className="background-overlay"></div>
         <div className="carImage">
             <img src={car.imgURL} alt="Car" />
         </div>
