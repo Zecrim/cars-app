@@ -10,7 +10,7 @@ const Dashboard = (props) => {
   }
   
   return (
-    <main>
+    <main className="dashboard">
       <h1>Welcome, {user.username}</h1><br/>
       <h3>This is where you can see everybody's garages!</h3><br/>
       <div>

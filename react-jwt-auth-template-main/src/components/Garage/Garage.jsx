@@ -13,13 +13,11 @@ const Garage = (props) => {
     const [garageOwner, setGarageOwner] = useState('')
     const [cars, setCars] = useState([])
     const [garages, setGarages] = useState([])
-    const [editGarage, setEditGarage] = useState(null);
     const [isFormVisible, setIsFormVisible] = useState(false);
     const navigate = useNavigate()
 
     const toggleForm = () => {
         setIsFormVisible(!isFormVisible);
-        setEditGarage(null); 
       };
 
     const fetchGarages = async () => {
@@ -35,7 +33,7 @@ const Garage = (props) => {
           setGarageOwner(garageData.owner)
         };
         if (garageId) fetchCars();
-      }, [garageId]);
+      }, [garageId, userId]);
 
 
     const toggleNewCar = () => {
@@ -70,8 +68,6 @@ const Garage = (props) => {
       const handleEditGarage = async (formData) => {
         const updatedGarage = await garageService.updateGarage(userId, garageId, formData);
         setGarageName(updatedGarage.name);
-        setEditGarage(false)
-
         toggleForm(); // Hide the form after editing the garage
       };
     
@@ -81,24 +77,11 @@ const Garage = (props) => {
 
     return (
         <main className='garage'>
-            <div>
+            <div className='garage-header'>
+                {!isFormVisible && (
                 <h1>Welcome to {garageName}</h1>
-                {userId === garageOwner && (!isFormVisible) && (
-                    <>
-                        <button onClick={handleEditButtonClick}>✏️</button>
-                        <button onClick={() => handleDeleteGarage(garageId)}>🗑️</button>
-                    </>
                 )}
-            </div>
-            <CarList cars={cars}/>
-            <div className="garage">
-            {userId === garageOwner && (
-                <button className="toggleButton" onClick={toggleNewCar}>Add a Car</button>
-            )}
-                {newCar && <NewCarForm handleNewCar={handleNewCar} toggleNewCar={toggleNewCar} />}
-                
-            </div>
-            {isFormVisible && (
+                {isFormVisible && (
                 <NewGarageForm
                 userId={userId}
                 garageId={garageId}
@@ -106,6 +89,22 @@ const Garage = (props) => {
                 handleEditGarage={handleEditGarage}
                 />
             )}
+                {userId === garageOwner && (!isFormVisible) && (
+                    <div>
+                        <button onClick={handleEditButtonClick}>✏️</button>
+                        <button onClick={() => handleDeleteGarage(garageId)}>🗑️</button>
+                    </div>
+                )}
+            </div>
+            
+            <CarList cars={cars}/>
+            <div className='new-car-button'>
+            {userId === garageOwner && (
+                <button className="toggleButton" onClick={toggleNewCar}>Add a Car</button>
+            )}
+                {newCar && <NewCarForm handleNewCar={handleNewCar} toggleNewCar={toggleNewCar} />}
+                
+            </div>
         </main>
      )
 }
