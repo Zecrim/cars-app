@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Geologica:wght@100..900&family=Staatliches&display=swap');
+
+
 * {
   padding: 0;
   margin: 0;
-  box-sizing: border-box; 
+  box-sizing: border-box;
+  font-family: Staatliches, sans-serif;
 }
 
 :root {
@@ -38,13 +42,17 @@
   z-index: -1;
 }
 
+input {
+  font-family: Geologica, sans-serif;
+}
+
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #ff6600;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: red;
 }
 
 .garage, .landing {
@@ -125,17 +133,15 @@ body {
   max-width: 90%;
   margin: 2% 3%;
   padding: 1%;
-  background-color: rgb(25, 26, 26, 0.8);
   border-radius: 25px;
   font-size: 1.5rem;
   list-style: none;
 }
 .garage-list li  {
-  color: white;
   padding: 1%;
 }
 .garage-list li a {
-  color: white;
+  color: #ff6600;
 }
 
 .garage-list li a:hover {
@@ -150,12 +156,6 @@ body {
     list-style-type: none;
   }
 }
-
-/* div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
 nav {
   position: absolute;
@@ -204,9 +204,11 @@ button {
 .carImage {
   max-width: 100%;
   max-height: auto;
+  display: flex;
+  justify-content: center;
 }
 
-.car-details {
+.car-details, .car-list-details {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -220,6 +222,10 @@ button {
     border: none;
     background-color: none;
   }
+}
+
+.car-list-details:hover {
+  color: red;
 }
 
 .car-comments-box {
@@ -239,13 +245,17 @@ button {
 }
 
 .car-comment-items {
-  max-width: 55vw;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
   overflow: auto;
   word-break: break-all;
 }
 
 .car-comment-text {
   text-wrap: wrap;
+  font-size: 1.5rem;
+  font-family: Geologica, sans-serif;
 }
 
 .car-comment-tools {
@@ -259,6 +269,15 @@ button {
   } 
 }
 
+.car-comment-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.car-comment-form textarea {
+  font-family: Geologica, sans-serif;
+}
+
 .comment-box {
   display: flex;
   border: 1px solid darkslategray;
@@ -268,11 +287,19 @@ button {
 .comment-author {
   display: flex;
   align-items: center;
+  font-size: 1.2rem;
+  padding-right: 3%;
+}
+
+.comment-author-post {
+  font-size: .7rem;
 }
 
 .carImage img {
-  width: 90vw;
+  width: 60vw;
   height: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .car-list ul {
@@ -313,26 +340,27 @@ button {
   flex-direction: column;
   background-color: rgb(25, 26, 26);
   border-radius: 25px;
-  font-family: sans-serif;
   padding: 15%;
   margin: 75% auto;
+  width: 20vw;
 }
 .sign-in-up input {
+  width: 100%;
   margin: 1% 0 8% 0;
   color: white;
 }
 .sign-in-up button {
   width: 100%;
-  background-color: red;
+  background-color: #ff6600;
   border: none;
   color: black;
   border-radius: 25px;
-  font-family: sans-serif;
   margin: 3.5% 0;
+  padding: 2%;
 }
 
 .sign-in-up button:hover {
-  color: aqua;
+  color: red;
   cursor: pointer;
 }
 
@@ -342,6 +370,9 @@ button {
 }
 
 .sign-in-up label {
-  margin-bottom: 5px;
   color: white;
+}
+
+.sign-in-up h1 {
+  margin-bottom: 10%;
 }
