@@ -12,11 +12,11 @@ const Dashboard = (props) => {
   return (
     <main className="dashboard">
       <h1>Welcome, {user.username}</h1><br/>
-      <h3>This is where you can see everybody's garages!</h3><br/>
+      <h3>Here are all the Wrench Collective garages- look around!</h3><br/>
       <div>
         <GarageList garages={props.garages} userId={user._id} />
       </div>
-      <button onClick={newButtonClick}>Add a Garage</button>
+      
     </main>
   );
 };

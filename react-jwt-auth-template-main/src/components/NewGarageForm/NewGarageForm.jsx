@@ -29,20 +29,26 @@ const NewGarageForm = (props) => {
     setFormData(emptyForm);
   };
 
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>{props.garageId ? 'Edit Garage Name' : 'New Garage Information'}</h1>
-      <label htmlFor="text-input">Garage Name:</label>
-      <input
-        required
-        type="text"
-        name="name"
-        id="text-input"
-        value={formData.name}
-        onChange={handleChange}
-      /><br/>
-      <button type="submit">{props.garageId ? 'Change Garage Name' : 'Create New Garage'}</button>
-    </form>
+    <main style={{width: "60%"}} className='new-car-form' >
+      <div className='new-garage-form'>
+        <form onSubmit={handleSubmit}>
+          <h3>{props.garageId ? 'Edit Garage Name' : 'New Garage Information'}</h3>
+          <label htmlFor="text-input">Garage Name:</label>
+          <input
+            required
+            type="text"
+            name="name"
+            id="text-input"
+            value={formData.name}
+            onChange={handleChange}
+          /><br/>
+          <button type="submit">{props.garageId ? 'Change Garage Name' : 'Create New Garage'}</button>
+          {/* <button onClick={props.toggleNewGarage}>Cancel</button> */}
+        </form>
+      </div>
+    </main>
   );
 };
 

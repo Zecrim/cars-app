@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const GarageList = (props) => {
     return (
-        <div className = "garageList">
+        <div className = "garage-list">
             <ul>
             {props.garages.map((garage) => (
                 <li key={garage._id}>
