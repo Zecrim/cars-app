@@ -14,7 +14,7 @@ const CarCommentForm = (props) => {
       setFormData(carData.comments.find((comment) => comment._id === props.commentId));
     };
     if (props.carId && props.commentId) fetchComment();
-  }, [userId, garageId, carId, props.comment_id]);
+  }, [userId, garageId, carId, props.carId, props.commentId]);
   
 
   const handleChange = (evt) => {

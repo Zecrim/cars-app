@@ -27,12 +27,28 @@ const Garage = (props) => {
 
     useEffect(() => {
         const fetchCars = async () => {
-          const garageData = await garageService.show(userId, garageId)
-          setCars(garageData.cars)
-          setGarageName(garageData.name)
-          setGarageOwner(garageData.owner)
+          const garageData = await garageService.show(userId, garageId);
+          setCars(garageData.cars);
+          setGarageName(garageData.name);
+          setGarageOwner(garageData.owner);
+          document.documentElement.style.setProperty(
+            '--background-image',
+            'url("https://wallpapercave.com/wp/wp4334097.jpg")'
+          );
+          document.documentElement.style.setProperty(
+            '--background-color',
+            'transparent'
+          );
         };
-        if (garageId) fetchCars();
+    
+        if (garageId) {
+          fetchCars();
+        }
+    
+        return () => {
+          document.documentElement.style.setProperty('--background-image', 'none');
+          document.documentElement.style.setProperty('--background-color', '#242424');
+        };
       }, [garageId, userId]);
 
 
@@ -68,6 +84,7 @@ const Garage = (props) => {
       const handleEditGarage = async (formData) => {
         const updatedGarage = await garageService.updateGarage(userId, garageId, formData);
         setGarageName(updatedGarage.name);
+        props.setGarages[(prevGarages => prevGarages.filter((garage) => garage._id !== updatedGarage._id)), updatedGarage];
         toggleForm(); // Hide the form after editing the garage
       };
     
@@ -77,6 +94,7 @@ const Garage = (props) => {
 
     return (
         <main className='garage'>
+            <div className="background-overlay"></div>
             <div className='garage-header'>
                 {!isFormVisible && (
                 <h1>Welcome to {garageName}</h1>

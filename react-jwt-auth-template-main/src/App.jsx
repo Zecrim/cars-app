@@ -49,13 +49,12 @@ const App = () => {
           user={user} 
           handleSignout={handleSignout}  
         />
-        {newGarage && <NewGarageForm handleNewGarage={handleNewGarage}/>}
         <Routes>
           {user ? (
             <>
             <Route path="/" element={<Dashboard user={user} garages={garages} toggleNewGarage={toggleNewGarage} />} />
             <Route path="/:userId" element={<Profile user={user} garages={garages} toggleNewGarage={toggleNewGarage} />} />
-            <Route path='/:userId/garages/:garageId' element={<Garage garages={garages} setGarages={setGarages} />} />
+            <Route path='/:userId/garages/:garageId' element={<Garage garages={garages} setGarages={setGarages} toggleNewGarage={toggleNewGarage} />} />
             <Route path='/:userId/garages/:garageId/:carId' element={<CarShow  />} />
             </>
           ) : (
@@ -64,6 +63,7 @@ const App = () => {
           <Route path="/signup" element={<SignupForm setUser={setUser} />} />
           <Route path="/signin" element={<SigninForm setUser={setUser} />} />
         </Routes>
+        {newGarage && <NewGarageForm handleNewGarage={handleNewGarage}/>}
       </AuthedUserContext.Provider>
     </>
   );
