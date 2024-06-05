@@ -82,6 +82,10 @@ a:hover {
   margin-bottom: 5vh;
 }
 
+.new-car-button {
+  font-size: 1.5rem;
+}
+
 .new-car-form label {
   font-weight: bold;
   margin-bottom: 5px;
@@ -239,6 +243,7 @@ button {
 .car-comments {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 10px;
   max-height: 40vh;
   overflow-x: hidden;
@@ -247,6 +252,7 @@ button {
 .car-comment-items {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
   overflow: auto;
   word-break: break-all;
@@ -266,14 +272,18 @@ button {
     width: 90%;
     height: 6rem;
     font-size: 1.2rem;
-  } 
+  }
 }
+
 
 .car-comment-buttons {
   display: flex;
   flex-direction: column;
 }
 
+.car-comment-form button {
+  font-size: 1.5rem;
+}
 .car-comment-form textarea {
   font-family: Geologica, sans-serif;
 }
@@ -344,10 +354,12 @@ button {
   margin: 75% auto;
   width: 20vw;
 }
+
 .sign-in-up input {
   width: 100%;
   margin: 1% 0 8% 0;
   color: white;
+  font-size: 1.25rem;
 }
 .sign-in-up button {
   width: 100%;
@@ -357,6 +369,7 @@ button {
   border-radius: 25px;
   margin: 3.5% 0;
   padding: 2%;
+  font-size: 1.25rem;
 }
 
 .sign-in-up button:hover {
@@ -371,6 +384,7 @@ button {
 
 .sign-in-up label {
   color: white;
+  font-size: 1.25rem;
 }
 
 .sign-in-up h1 {

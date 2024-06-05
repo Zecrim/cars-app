@@ -84,7 +84,6 @@ const Garage = (props) => {
       const handleEditGarage = async (formData) => {
         const updatedGarage = await garageService.updateGarage(userId, garageId, formData);
         setGarageName(updatedGarage.name);
-        props.setGarages[(prevGarages => prevGarages.filter((garage) => garage._id !== updatedGarage._id)), updatedGarage];
         toggleForm(); // Hide the form after editing the garage
       };
     
