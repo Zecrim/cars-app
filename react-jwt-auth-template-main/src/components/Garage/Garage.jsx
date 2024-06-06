@@ -3,7 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import CarList from '../CarList/CarList'
 import NewCarForm from '../NewCarForm/NewCarForm'
 import NewGarageForm from '../NewGarageForm/NewGarageForm';
-import * as garageService from '../../services/garageService'
+import * as garageService from '../../services/garageService';
+import GaragePhoto from '../../assets/GaragePhoto.png'; 
+
 
 const Garage = (props) => {
 
@@ -33,7 +35,7 @@ const Garage = (props) => {
           setGarageOwner(garageData.owner);
           document.documentElement.style.setProperty(
             '--background-image',
-            'url("https://wallpapercave.com/wp/wp4334097.jpg")'
+            `url(${GaragePhoto})`
           );
           document.documentElement.style.setProperty(
             '--background-color',

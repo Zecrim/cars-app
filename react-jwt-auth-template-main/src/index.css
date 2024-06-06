@@ -359,7 +359,7 @@ button {
   background-color: rgb(25, 26, 26);
   border-radius: 25px;
   padding: 15%;
-  margin: 75% auto;
+  margin: 70% auto;
   width: 20vw;
 }
 
@@ -400,3 +400,24 @@ button {
 .sign-in-up h1 {
   margin-bottom: 10%;
 }
+
+.logo {
+  width: 10vw;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 5vh;
+  margin-left: 5vw;
+}
+
+@media screen and (max-width: 768px) {
+  .sign-in-up {
+    width:90%;
+    margin: auto;
+    margin-top: 10vh;
+  }
+  .logo {
+    width: 25vw;
+  }
+}
+

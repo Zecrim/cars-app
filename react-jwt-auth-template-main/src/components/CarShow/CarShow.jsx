@@ -3,6 +3,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import CarCommentForm from '../CarCommentForm/CarCommentForm.jsx';
 import NewCarForm from '../NewCarForm/NewCarForm'
 import * as garageService from '../../services/garageService'
+import carShowPhoto from '../../assets/carShowPhoto.jpg'; 
+
 
 const CarShow = () => {
 
@@ -23,7 +25,7 @@ const CarShow = () => {
           setGarage(garageData)
           document.documentElement.style.setProperty(
             '--background-image',
-            'url("https://wallpapercave.com/wp/wp4334210.jpg")'
+            `url(${carShowPhoto})`
           );
           document.documentElement.style.setProperty(
             '--background-color',
