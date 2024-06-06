@@ -45,7 +45,6 @@ const NewGarageForm = (props) => {
             onChange={handleChange}
           /><br/>
           <button type="submit">{props.garageId ? 'Change Garage Name' : 'Create New Garage'}</button>
-          {/* <button onClick={props.toggleNewGarage}>Cancel</button> */}
         </form>
       </div>
     </main>

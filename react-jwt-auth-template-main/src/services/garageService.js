@@ -8,7 +8,7 @@ const index = async (userId) => {
       });
       return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
   };
 
@@ -20,7 +20,7 @@ try {
     });
     return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
 };
 
@@ -37,7 +37,7 @@ const create = async (userId, formData) => {
       });
       return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
   };
 
@@ -54,7 +54,7 @@ const createCar = async (userId, garageId, formData) => {
     });
     return res.json();
   } catch (error) {
-    throw err;
+    console.log(error);
   }
 };
 
@@ -66,7 +66,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
       } catch (error) {
-          throw err;
+          console.log(error);
       }
   };
   // Delete car
@@ -80,7 +80,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
   };
 
@@ -97,7 +97,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
   }
 
@@ -115,7 +115,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
   };
 
@@ -131,7 +131,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
   };
 
@@ -147,7 +147,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
   };
 
@@ -161,7 +161,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
   };
 
@@ -177,7 +177,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      throw err;
+      console.log(error);
     }
   }
 
