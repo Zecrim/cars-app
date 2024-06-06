@@ -1,4 +1,4 @@
-const BASE_URL = `${import.meta.env.VITE_EXPRESS_BACKEND_URL}`;
+const BASE_URL = '/api';
 
 // Garage Index
 const index = async (userId) => {

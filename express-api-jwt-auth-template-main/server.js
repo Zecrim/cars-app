@@ -21,10 +21,9 @@ app.use(express.static(path.join(path.dirname(__dirname), 'react-jwt-auth-templa
 
 
 // Routes go here
-app.use('/test-jwt', testJWTRouter);
-app.use('/users', usersRouter);
-app.use('/profiles', profilesRouter);
-app.use('/:userId/garages', garagesRouter);
+app.use('/api/users', usersRouter);
+app.use('/api/profiles', profilesRouter);
+app.use('/api/:userId/garages', garagesRouter);
 
 app.get('*', (req, res) => {
     res.sendFile(path.join(path.dirname(__dirname), 'react-jwt-auth-template-main', 'dist', 'index.html'));
