@@ -219,6 +219,7 @@ button {
   max-height: auto;
   display: flex;
   justify-content: center;
+  margin-top: 1%;
 }
 
 .car-details, .car-list-details {
@@ -263,7 +264,7 @@ button {
   align-items: center;
   width: 100%;
   overflow: auto;
-  word-break: break-all;
+  word-break: break-word;
 }
 
 .car-comment-text {
