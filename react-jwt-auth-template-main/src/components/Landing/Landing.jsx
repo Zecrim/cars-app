@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import LandingPhoto from '../../assets/LandingPhoto.png'; 
+
 
 const Landing = () => {
   
@@ -6,7 +8,7 @@ const Landing = () => {
     const applyBackground = () => {
       document.documentElement.style.setProperty(
         '--background-image',
-        'url("https://i.redd.it/mc1cx55wz6i71.jpg")'
+        `url(${LandingPhoto})`
       );
       document.documentElement.style.setProperty(
         '--background-color',

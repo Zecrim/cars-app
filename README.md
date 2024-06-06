@@ -19,7 +19,10 @@ If you want to dive right in you can [start here.](https://the-wrench-collective
 
 ## Planning Materials
 As this was a group project, all of our planning took place on Trello.
-You can find our original wireframes, our Entity Relationship Diagram, and our Route tables all [here](https://trello.com/b/PFSAVWZK/sczboard).
+1. ![The model diagram showing the apps model relationships.](./express-api-jwt-auth-template-main/assets/model-diagram.png)
+1. ![The route table for auth](./express-api-jwt-auth-template-main/assets/route-1.png)
+1. ![The route table for garages](./express-api-jwt-auth-template-main/assets/route-2.png)
+1. ![The route table for cars and car comments](./express-api-jwt-auth-template-main/assets/route-3.png)
 
 ## Attributions
 1. [Google Fonts](https://fonts.google.com/) for the in game typography.

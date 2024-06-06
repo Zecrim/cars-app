@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService';
+import wrenchCollective from '../../assets/wrenchCollective.png'; 
+
 
 const SigninForm = (props) => {
   const navigate = useNavigate();
@@ -31,6 +33,8 @@ const SigninForm = (props) => {
   };
 
   return (
+    <>
+    <img src={wrenchCollective} alt='Logo' className='logo'/>
     <main className='sign-in-up'>
       <h1>Log In</h1>
       <p>{message}</p>
@@ -65,6 +69,8 @@ const SigninForm = (props) => {
         </div>
       </form>
     </main>
+    
+   </> 
   );
 };
 

@@ -1,5 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
+import ProfilePhoto from '../../assets/ProfilePhoto.png'; 
+
 
 
 const Profile = (props) => {
@@ -12,7 +14,7 @@ const Profile = (props) => {
             setMyGarages(myGarageList);
             document.documentElement.style.setProperty(
                 '--background-image',
-                'url("https://wallpapercave.com/wp/wp4334175.jpg")'
+                `url(${ProfilePhoto})`
             );
             document.documentElement.style.setProperty(
                 '--background-color',

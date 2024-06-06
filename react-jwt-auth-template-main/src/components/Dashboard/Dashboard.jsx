@@ -1,6 +1,8 @@
 import { AuthedUserContext } from '../../App';
 import { useContext, useEffect } from 'react';
 import GarageList from '../GarageList/GarageList'
+import dashboardPhoto from '../../assets/dashboardPhoto.png'; 
+
 
 const Dashboard = (props) => {
   const user = useContext(AuthedUserContext);
@@ -9,7 +11,7 @@ const Dashboard = (props) => {
     const applyBackground = () => {
       document.documentElement.style.setProperty(
         '--background-image',
-        'url("https://wallpapercave.com/wp/wp4334105.jpg")'
+        `url(${dashboardPhoto})`
       );
       document.documentElement.style.setProperty(
         '--background-color',
