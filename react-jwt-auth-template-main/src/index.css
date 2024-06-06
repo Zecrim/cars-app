@@ -126,6 +126,14 @@ a:hover {
   }
 }
 
+.addGarageButton {
+  font-size: 1.5rem;
+  color: #ff6600;
+  &:hover {
+    color: red;
+  }
+}
+
 .new-garage-form {
   width: 50%
 }
