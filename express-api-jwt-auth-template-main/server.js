@@ -30,6 +30,6 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(path.dirname(__dirname), 'react-jwt-auth-template-main', 'dist', 'index.html'));
 });
 
-app.listen(3000, () => {
-    console.log('The express app is ready!');
+app.listen(process.env.PORT, function () {
+    console.log('Express is listening to port', process.env.PORT);
 });
