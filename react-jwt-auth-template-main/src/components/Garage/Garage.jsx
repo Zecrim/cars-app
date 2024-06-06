@@ -74,22 +74,16 @@ const Garage = (props) => {
             console.error("Failed to delete the garage:", error);
         }
     };
-
-    const handleNewGarage = async (formData) => {
-        const newGarage = await garageService.createGarage(formData);
-        setGarages([...garages, newGarage]);
-        toggleForm();
-      };
     
-      const handleEditGarage = async (formData) => {
-        const updatedGarage = await garageService.updateGarage(userId, garageId, formData);
-        setGarageName(updatedGarage.name);
-        toggleForm();
-      };
-    
-      const handleEditButtonClick = () => {
-        setIsFormVisible(true);
-      };
+    const handleEditGarage = async (formData) => {
+      const updatedGarage = await garageService.updateGarage(userId, garageId, formData);
+      setGarageName(updatedGarage.name);
+      toggleForm();
+    };
+  
+    const handleEditButtonClick = () => {
+      setIsFormVisible(true);
+    };
 
     return (
         <main className='garage'>
@@ -102,7 +96,6 @@ const Garage = (props) => {
                 <NewGarageForm
                 userId={userId}
                 garageId={garageId}
-                handleNewGarage={handleNewGarage}
                 handleEditGarage={handleEditGarage}
                 />
             )}

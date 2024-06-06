@@ -95,7 +95,7 @@ const CarShow = () => {
     <div className="car-show">
         <div className="background-overlay"></div>
         <div className="carImage">
-            <img src={car.imgURL} alt="Car" />
+            <img src={car.imgURL} alt={`An image of ${car.make} ${car.model}`} />
         </div>
         <div className="car-details">
             <span>Make: {car.make}</span>

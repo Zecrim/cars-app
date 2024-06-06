@@ -15,7 +15,7 @@ Once you sign up, you can create a garage, a wishlist, or multiple garages. In e
 This app was designed for people to come together and experience their cars in a community.
 
 ## Getting Started
-If you want to dive right in you can [start here.](https://the-wrench-collective-b3c568642add.herokuapp.com/).
+If you want to dive right in you can [start here.](https://the-wrench-collective-b3c568642add.herokuapp.com/)
 
 ## Planning Materials
 As this was a group project, all of our planning took place on Trello.
@@ -30,7 +30,7 @@ You can find our original wireframes, our Entity Relationship Diagram, and our R
 Libraries utilized: Mongoose, Express, Node.js, Bcrypt, Dotenv, Express-Session, CORS, React, React-DOM, React-router-dom, 
 
 ## Technologies Used
-This app is an example of a classic MEN stack app primary technologies include:
+This app is an example of a classic MERN stack app primary technologies include:
 ![React Badge](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 )
 ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
