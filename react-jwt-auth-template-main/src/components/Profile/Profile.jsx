@@ -53,7 +53,7 @@ const Profile = (props) => {
                 )
                 )}
             </ul><br/>
-            {props.user._id === userId && <button onClick={newButtonClick}>Add a Garage</button>}
+            {props.user._id === userId && <button onClick={newButtonClick} className='addGarageButton'>Add a Garage</button>}
         </div>
     )
 }
