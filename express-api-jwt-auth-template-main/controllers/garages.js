@@ -11,10 +11,6 @@ router.use(verifyToken);
 
 // Everything starts with  /:userId/garages
 
-// Garage
-//  get /, get /new, post /, get /:garageId, get /:garageId/edit (don't need),
-// put /:garageId, delete /:garageId
-
 router.get('/', async (req, res) => {
     try {
       const garage = await Garage.find({})
@@ -34,7 +30,6 @@ router.post('/', async (req, res) => {
       garage._doc.owner = req.user;
       res.status(201).json(garage);
     } catch (error) {
-      console.log(error);
       res.status(500).json(error);
     }
   });
@@ -44,14 +39,13 @@ router.post('/', async (req, res) => {
       const garage = await Garage.findById(req.params.garageId)
       res.status(200).json(garage);
     } catch (error) {
-      console.log(error)
       res.status(500).json(error);
     }
   });
 
   router.put('/:garageId', async (req, res) => {
     try {
-      const garage = await Garage.findById(req.params.garageId); // could potentially populate owner but holding off
+      const garage = await Garage.findById(req.params.garageId);
   
       if (!garage.owner.equals(req.user._id)) {
         return res.status(403).send("You're not allowed to do that!");
@@ -63,10 +57,8 @@ router.post('/', async (req, res) => {
         { new: true }
       );
   
-      // Append req.user to the owner property:
       updatedGarage._doc.owner = req.user;
   
-      // Issue JSON response:
       res.status(200).json(updatedGarage);
     } catch (error) {
       res.status(500).json(error);
@@ -89,9 +81,6 @@ router.post('/', async (req, res) => {
   });
 
 // Garage Comments 
-// Post /:garageId/comments/ Put /:grageId/comments/:commentId
-// Delete /:garageId/comments/:commentId
-
   
   router.post('/:garageId/comments', async (req, res) => {
     try {
@@ -100,12 +89,10 @@ router.post('/', async (req, res) => {
       garage.comments.push(req.body);
       await garage.save();
   
-      // Find the newly created comment:
       const newComment = garage.comments[garage.comments.length - 1];
   
       newComment._doc.author = req.user;
   
-      // Respond with the newComment:
       res.status(201).json(newComment);
     } catch (error) {
       res.status(500).json(error);
@@ -135,10 +122,6 @@ router.post('/', async (req, res) => {
     }
   });
 
-  // Garage Cars
-
-  // Index Get /:garageId/ == SHOW for Garages
-
   // Create /:garageId
   router.post('/:garageId', async (req, res) => {
     try {
@@ -152,7 +135,6 @@ router.post('/', async (req, res) => {
       res.status(500).json(error);
     }
   })
-  // New GET /:garageId/new (shouldn't need for React)
 
   // Show GET /:garageId/:carId
   router.get('/:garageId/:carId', async (req, res) => {
@@ -169,7 +151,6 @@ router.post('/', async (req, res) => {
   });
 
   // Update /:garageId/:cardId
-
   router.put('/:garageId/:carId', async (req, res) => {
     try {
       const garage = await Garage.findById(req.params.garageId);
@@ -180,7 +161,7 @@ router.post('/', async (req, res) => {
         car.year = req.body.year;
         car.imgURL = req.body.imgURL;
       await garage.save();
-      res.status(200).json(car); // Can return the car object later if we need to
+      res.status(200).json(car);
     } catch (err) {
       res.status(500).json(err);
     }
@@ -198,8 +179,8 @@ router.post('/', async (req, res) => {
   });
 
 // Garages Cars Comments
-// Create POST /:garageId/:carId/comments/ 
 
+// Create POST /:garageId/:carId/comments/ 
 
 router.post('/:garageId/:carId/comments', async (req, res) => {
   try {
@@ -209,12 +190,10 @@ router.post('/:garageId/:carId/comments', async (req, res) => {
     car.comments.push(req.body);
     await garage.save();
 
-    // Find the newly created comment:
     const newComment = car.comments[car.comments.length - 1];
 
-    newComment._doc.author = req.user; //confused about what this accomplishes
+    newComment._doc.author = req.user;
 
-    // Respond with the newComment:
     res.status(201).json(newComment);
   } catch (error) {
     res.status(500).json(error);
@@ -235,19 +214,13 @@ router.put('/:garageId/:carId/comments/:commentId', async (req, res) => {
     comment.text = req.body.text
     await garage.save();
 
-    // Find the newly created comment:
-    // const newComment = car.comments.[car.comments.length - 1];
-
-    // newComment._doc.author = req.user; //confused about what this accomplishes
-
-    // Respond with the newComment:
     res.status(200).json(car);
   } catch (error) {
     res.status(500).json(error);
   }
 });
-// Delete route DELETE /:garageId/:cardId/comments/:commentId
 
+// Delete route DELETE /:garageId/:cardId/comments/:commentId
 router.delete('/:garageId/:carId/comments/:commentId', async (req, res) => {
   try {
     const garage = await Garage.findById(req.params.garageId);
@@ -255,12 +228,6 @@ router.delete('/:garageId/:carId/comments/:commentId', async (req, res) => {
     const comment = car.comments.remove({ _id: req.params.commentId });
     await garage.save();
 
-    // Find the newly created comment:
-    // const newComment = car.comments.[car.comments.length - 1];
-
-    // newComment._doc.author = req.user; //confused about what this accomplishes
-
-    // Respond with the newComment:
     res.status(200).json({ message: 'Ok' });
   } catch (error) {
     res.status(500).json(error);

@@ -38,7 +38,7 @@ const Profile = (props) => {
     return (
         <div className = "profile">
             <div className="background-overlay"></div>
-            <h1>{myGarages[0]?.owner.username}'s Garages</h1>
+            {myGarages[0]? <h1>{myGarages[0]?.owner.username}'s Garages</h1> : <h1>Add a garage to get started!</h1>}<br/>
             <ul>
                 {myGarages.map((garage) => (
                         <li key={garage._id}>
@@ -50,7 +50,7 @@ const Profile = (props) => {
                         </li>
                 )
                 )}
-            </ul>
+            </ul><br/>
             {props.user._id === userId && <button onClick={newButtonClick}>Add a Garage</button>}
         </div>
     )

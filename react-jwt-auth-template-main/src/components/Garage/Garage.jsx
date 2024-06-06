@@ -78,17 +78,17 @@ const Garage = (props) => {
     const handleNewGarage = async (formData) => {
         const newGarage = await garageService.createGarage(formData);
         setGarages([...garages, newGarage]);
-        toggleForm(); // Hide the form after creating a new garage
+        toggleForm();
       };
     
       const handleEditGarage = async (formData) => {
         const updatedGarage = await garageService.updateGarage(userId, garageId, formData);
         setGarageName(updatedGarage.name);
-        toggleForm(); // Hide the form after editing the garage
+        toggleForm();
       };
     
       const handleEditButtonClick = () => {
-        setIsFormVisible(true);  // Show the form when editing
+        setIsFormVisible(true);
       };
 
     return (
