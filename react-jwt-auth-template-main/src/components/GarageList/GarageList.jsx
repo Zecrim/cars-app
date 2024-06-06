@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-// import styles from './GarageList.module.css'
 
 const GarageList = (props) => {
     return (

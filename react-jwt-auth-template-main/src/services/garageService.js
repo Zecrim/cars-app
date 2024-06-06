@@ -8,7 +8,7 @@ const index = async (userId) => {
       });
       return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
   };
 
@@ -20,15 +20,13 @@ try {
     });
     return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
 };
 
 // Garage create
 const create = async (userId, formData) => {
     try {
-        // console.log('userid: '+userId+' formdata '+formData)
-        // console.log(`fetching to: ${BASE_URL}/${userId}/garages/`)
       const res = await fetch(`${BASE_URL}/${userId}/garages/`, {
         method: 'POST',
         headers: {
@@ -39,15 +37,13 @@ const create = async (userId, formData) => {
       });
       return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
   };
 
   // Car create
 const createCar = async (userId, garageId, formData) => {
   try {
-      // console.log('userid: '+userId+' formdata '+formData)
-      // console.log(`fetching to: ${BASE_URL}/${userId}/garages/`)
     const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}`, {
       method: 'POST',
       headers: {
@@ -58,7 +54,7 @@ const createCar = async (userId, garageId, formData) => {
     });
     return res.json();
   } catch (error) {
-    console.log(error);
+    throw err;
   }
 };
 
@@ -70,7 +66,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
       } catch (error) {
-          console.log(error);
+          throw err;
       }
   };
   // Delete car
@@ -84,7 +80,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
   };
 
@@ -101,7 +97,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
   }
 
@@ -109,8 +105,6 @@ const carShow = async (userId, garageId, carId) => {
   // Car Comment Create
   const createCarComment = async (userId, garageId, carId, formData) => {
     try {
-        // console.log('userid: '+userId+' formdata '+formData)
-        // console.log(`fetching to: ${BASE_URL}/${userId}/garages/`)
       const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}/${carId}/comments`, {
         method: 'POST',
         headers: {
@@ -121,14 +115,12 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
   };
 
   const deleteCarComment = async (userId, garageId, carId, commentId, formData) => {
     try {
-        // console.log('userid: '+userId+' formdata '+formData)
-        // console.log(`fetching to: ${BASE_URL}/${userId}/garages/`)
       const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}/${carId}/comments/${commentId}`, {
         method: 'DELETE',
         headers: {
@@ -139,14 +131,12 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
   };
 
   const updateCarComment = async (userId, garageId, carId, commentId, formData) => {
     try {
-        // console.log('userid: '+userId+' formdata '+formData)
-        // console.log(`fetching to: ${BASE_URL}/${userId}/garages/`)
       const res = await fetch(`${BASE_URL}/${userId}/garages/${garageId}/${carId}/comments/${commentId}`, {
         method: 'PUT',
         headers: {
@@ -157,7 +147,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
   };
 
@@ -171,7 +161,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
   };
 
@@ -187,7 +177,7 @@ const carShow = async (userId, garageId, carId) => {
       });
       return res.json();
     } catch (error) {
-      console.log(error);
+      throw err;
     }
   }
 

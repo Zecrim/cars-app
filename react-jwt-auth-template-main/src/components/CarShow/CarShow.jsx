@@ -50,20 +50,15 @@ const CarShow = () => {
           ...car,
           comments: car.comments.filter((comment) => comment._id !== commentId),
         });
-        console.log(deletedComment)
     };
 
     const handleDeleteCar = async (carId) => {
-    // Call upon the service function:
     const deletedCar = await garageService.deleteCar(userId, garageId, carId);
-    // Filter state using deletedHoot._id:
     setGarage(garage.cars.filter((car) => car._id !== deletedCar._id));
-    // Redirect the user:
     navigate(`/${userId}/garages/${garageId}`);
     };
 
     const handleEditCar = async (formData) => {
-    // console.log(userId, garageId, carId, formData)
     const updatedCar = await garageService.updateCar(userId, garageId, carId, formData);
     setCar(updatedCar)
     toggleEditCar(false)

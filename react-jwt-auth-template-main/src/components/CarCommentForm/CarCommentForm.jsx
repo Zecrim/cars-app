@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import * as garageService from '../../services/garageService';
-// import styles from './CommentForm.module.css';
-
 
 const CarCommentForm = (props) => {
   const [formData, setFormData] = useState({ text: '' });

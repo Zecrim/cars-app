@@ -75,10 +75,10 @@ a:hover {
 }
 
 .new-car-form {
-  background-color: transparent; /* Light grey background */
+  background-color: transparent;
   padding: 20px;
   border: solid darkslategray;
-  border-radius: 5px; /* Slightly rounded corners for the form */
+  border-radius: 5px;
   margin-bottom: 5vh;
 }
 
@@ -89,34 +89,41 @@ a:hover {
 .new-car-form label {
   font-weight: bold;
   margin-bottom: 5px;
-  display: block; /* Forces labels to be on new lines */
+  display: block;
 }
 
 .new-car-form input {
-  background-color: gray; /* White background for inputs */
-  border: 1px solid #ccc; /* Light grey border */
-  border-radius: 3px; /* Rounded corners for inputs */
+  background-color: gray; 
+  border: 1px solid #ccc;
+  border-radius: 3px;
   padding: 10px;
   margin-bottom: 15px;
-  width: 100%; /* Make inputs full width */
+  width: 100%;
 }
 
 .new-car-form button {
-  background-color: #333; /* Dark grey button background */
-  color: #fff; /* White text for button */
-  border: none; /* Remove default button border */
-  border-radius: 5px; /* Rounded corners for buttons */
+  background-color: #333; 
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
   padding: 10px 20px;
-  cursor: pointer; /* Indicate clickable element */
+  cursor: pointer; 
 }
 
 .new-car-form button:hover {
-  background-color: #444; /* Darker grey on hover */
+  background-color: #444;
 }
 
 .new-car-form-buttons {
   display: flex;
   justify-content: space-between;
+}
+
+.toggleButton {
+  color: #ff6600;
+  &:hover {
+    color: red;
+  }
 }
 
 .new-garage-form {
@@ -163,8 +170,6 @@ body {
 
 nav {
   position: absolute;
-  /* background-color: darkred;
-  backdrop-filter: blur(1em); */
   top: 0;
   left: 0;
   width: 100%;
@@ -174,10 +179,14 @@ nav {
   padding-top: 2%;
 }
 
+.profile li {
+  font-size: 1.5rem;
+}
+
 nav ul {
   display: flex;
   width: 100%;
-  list-style-type: none;  /* justify-content: center; */
+  list-style-type: none;
 }
 
 nav li {
@@ -234,7 +243,6 @@ button {
 
 .car-comments-box {
   display: flex;
-  /* flex-wrap: wrap; */
   max-width: 90vw;
   border: solid darkslategray;
   padding: 15px;
@@ -359,7 +367,9 @@ button {
   width: 100%;
   margin: 1% 0 8% 0;
   color: white;
+  background-color: rgb(88, 86, 86);
   font-size: 1.25rem;
+  border: none;
 }
 .sign-in-up button {
   width: 100%;

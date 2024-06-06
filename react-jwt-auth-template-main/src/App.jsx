@@ -9,13 +9,13 @@ import Garage from './components/Garage/Garage';
 import NewGarageForm from './components/NewGarageForm/NewGarageForm';
 import CarShow from './components/CarShow/CarShow';
 import Profile from './components/Profile/Profile';
-import * as authService from '../src/services/authService'; // import the authservice
+import * as authService from '../src/services/authService';
 import * as garageService from './services/garageService'
 
 export const AuthedUserContext = createContext(null);
 
 const App = () => {
-  const [user, setUser] = useState(authService.getUser()); // using the method from authservice
+  const [user, setUser] = useState(authService.getUser());
   const [garages, setGarages] = useState([])
   const [newGarage, setNewGarage] = useState(false);
 
